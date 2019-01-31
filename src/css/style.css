@@ -1,0 +1,186 @@
+@font-face {
+	font-family: GothamRounded;
+	font-family-src: url("../fonts/gothamrounded-book-webfont.woff") format("woff");
+	font-family-font-weight: normal;
+	font-family-font-style: normal;
+}
+
+html {
+	font-family: GothamRounded;
+	color: #3e434f;
+	font-size: 35px;
+	font-weight: 300;
+	line-height: 80px;
+	text-align: left;
+}
+
+body {
+	background-color: #f0efe9;
+	color: #3e434f;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.note {
+	display: none;
+	position: relative;
+	width: 850px;
+	margin: 300px auto 300px;
+	padding: 90px 108px 180px;
+	box-shadow: 0px 6px 15px 0px rgba(207, 211, 218, 0.35);
+	background: #ffffff;
+	box-sizing: border-box;
+}
+
+.note_visible {
+	display: block;
+}
+
+.text {
+	display: inline-block;
+	padding-right: 108px;
+}
+
+.button {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	width: 59px;
+	height: 59px;
+	border-radius: 50%;
+	box-sizing: border-box;
+	border: 7px solid #eef0f5;
+}
+
+.list {
+	user-select: none;
+}
+
+.list__item {
+	position: relative;
+	line-height: 1.7;
+	margin-bottom: 70px;
+	transition: all .3s ease-out;
+}
+
+.list__item:hover {
+	background: #fbfbfb;
+	cursor: pointer;
+}
+
+.list__item:hover .button {
+	border: 7px solid #50e3a4;
+}
+
+.list__item_checked .text {
+	color: #ced0d7;
+}
+
+.list__item_checked .button {
+	border: 7px solid #50e3a4;
+	background: url("../images/checked.svg") no-repeat 50% 50%;
+}
+
+.new-task {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 180px;
+	height: 180px;
+	transform: translate(-50%, 50%);
+	border-radius: 50%;
+	font-size: 100px;
+	line-height: 180px;
+	text-align: center;
+	box-shadow: 0px 3px 10px 0px rgba(62, 192, 136, 0.8);
+	transition: all ease-out .3;
+	cursor: pointer;
+	background-color: #50e3a4;
+	color: #46be8b;
+	user-select: none;
+}
+
+.new-task:hover {
+	font-size: 105px;
+	box-shadow: 0px 3px 12px 1px rgba(62, 192, 136, 0.8);
+}
+
+.popup {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: rgba(80, 227, 164, 0.8);
+}
+
+.popup_active {
+	display: block;
+}
+
+.popup__tab {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 850px;
+	height: 453px;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	background-color: #ffffff;
+	box-shadow: 0px 6px 15px 0px rgba(207, 211, 218, 0.35);
+	box-sizing: border-box;
+}
+
+.popup__title {
+	margin: 70px 0 30px;
+	text-align: center;
+}
+
+.popup__form {
+	width: 550px;
+	margin: 0 auto;
+}
+
+.popup__close {
+	position: absolute;
+	top: 27px;
+	right: 27px;
+	width: 59px;
+	height: 59px;
+	cursor: pointer;
+	background: url("../images/delete-button.png") no-repeat 50% 50%;
+	user-select: none;
+}
+
+.form__task {
+	width: 100%;
+	border: 0;
+	outline: 0;
+	border-bottom: 3px solid #eef0f5;
+}
+
+.form__submit {
+	display: block;
+	width: 352px;
+	height: 59px;
+	margin: 50px auto 0;
+	border-radius: 30px;
+	outline: none;
+	border: 0;
+	font-size: .8rem;
+	box-shadow: 0px 3px 10px 0px rgba(62, 192, 136, 0.8);
+	cursor: pointer;
+	background-color: #50e3a4;
+	color: #ffffff;
+	user-select: none;
+}
+
+.form__submit:hover {
+	box-shadow: 0px 3px 11px 1px rgba(62, 192, 136, 0.8);
+}
