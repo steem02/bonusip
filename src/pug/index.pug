@@ -4,5 +4,85 @@ html(lang="ru")
 		meta(charset="UTF-8")
 		title test
 		meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
+		link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS", crossorigin="anonymous")
 		link(rel="stylesheet", href="css/build.css")
 	body
+		header.header.text-light.font-weight-bold
+			.header__filter
+			nav.navbar.navbar-expand-lg.px-md-5.pt-4.navbar-dark.text-nowrap.bg-transparent.sticky-top
+				a.navbar-brand BonusIP
+				a.navbar-text.order-lg-last.text-success(href="tel:89991234567") 8 (999) 123-45-67
+				button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent')
+					span.navbar-toggler-icon
+				#navbarSupportedContent.collapse.navbar-collapse.justify-content-end.mr-lg-4
+					ul.navbar-nav
+						li.nav-item.active
+							a.nav-link(href="#") Главная
+						li.nav-item
+							a.nav-link(href="#") Безопастность
+						li.nav-item
+							a.nav-link(href="#") Наши работы
+						li.nav-item 
+							a.nav-link(href="#") Вопросы
+						li.nav-item
+							a.nav-link(href="#") Контакты
+			.title.row.no-gutters.justify-content-center.justify-content-xl-end
+				.col-xl-6.text-center.text-xl-left
+					.title__content.d-inline-block.text-left
+						h1.px-3.d-inline-block.bg-success.display-4 Видеонаблюдение
+						.w-100
+						h2.px-3.d-inline-block под ключ
+			.subtitle.container.mb-5.justify-content-center
+				.row
+					.col-12.col-md-4.mb-5.mb-md-0
+						.row.mx-auto.subtitle__item
+							.col-3
+								include images/asset1.svg
+							.col-9.border-left.border-success Индивидуальный подход к каждому клиенту
+					.col-12.col-md-4.mb-5.mb-md-0
+						.row.mx-auto.subtitle__item
+							.col-3
+								include images/asset3.svg
+							.col-9.border-left.border-success Обучение после установки
+					.col-12.col-md-4.mb-5.mb-md-0
+						.row.mx-auto.subtitle__item
+							.col-3
+								include images/asset2.svg
+							.col-9.border-left.border-success 1 год гарантии на работу и оборудование
+			.container.pb-5
+				.row.mb-5
+					.col-12.text-center
+						button.button-form.btn.btn-lg.btn-danger.rounded-5(type='button') Узнайте стоимость
+				.row
+					.col-12.text-center
+						include images/slide.svg
+		section.level.container.py-5.d-flex.align-items-center
+			.row
+				.col-12.col-lg-6.mb-5.mb-lg-0
+					h3.font-weight-bold Безопасность на новом уровне
+					p.level__decr.pl-2.border-success По статистическим данным, процент безопасности дома или объекта увеличивается, после установки видеонаблюдения. Владелец будет иметь возможность наблюдать за своим имуществом в любое время. Вся информация записанная камерами, будет храниться в безопасном от злоумышленников месте.
+					p.level__decr.pl-2.border-danger Дома с установленной системой видеонаблюдения, грабители чаще обходят стороной.
+				.col-12.col-lg-6.d-flex.align-items-center
+					.level__animate.flex-grow-1
+						p Процент безопасности до установки камер
+						.level__line.bg-danger.mb-2
+						p Процент безопасности после установки камер
+						.level__line.bg-success
+		section.gallery
+			h2.font-weight-bold.mb-5.text-center Где установить видеонаблюдение?
+			.container-fluid
+				.row.mb-lg-4.justify-content-between
+					.col-12.col-lg-auto.mb-4.mb-lg-0.mr-lg-4.gallery__image.gallery__image_one.flex-grow-1.d-flex.align-items-center.justify-content-end
+						h2.p-2.bg-success.font-weight-bold.text-light дом, квартира
+					.col-12.col-lg-6.mb-4.mb-lg-0.gallery__image.gallery__image_two.flex-grow-1.d-flex.align-items-center
+						h2.p-2.bg-success.font-weight-bold.text-light офис, предприятие
+				.row.mb-4
+					.col-12.col-lg-auto.mr-lg-4.mb-4.mb-lg-0.gallery__image.gallery__image_three.flex-grow-1.d-flex.align-items-center.justify-content-end
+						h2.p-2.bg-success.font-weight-bold.text-light ресторан, кафе, бар
+					.col-12.col-lg-6.mb-4.mb-lg-0.gallery__image.gallery__image_four.flex-grow-1.d-flex.align-items-center
+						h2.p-2.bg-success.font-weight-bold.text-light склад, магазин
+			
+
+
+		script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js", integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP", crossorigin="anonymous")

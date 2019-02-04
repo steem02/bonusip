@@ -1,4 +1,79 @@
-body {
+.header {
+	position: relative;
+	background: url("../images/cam.jpg") no-repeat;
+	background-size: cover;
+}
+
+.header__filter {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	background: #000;
-	display: none;
+	opacity: .7;
+}
+
+.navbar {
+	margin-bottom: 200px;
+}
+
+.title {
+	margin-bottom: 150px;
+}
+
+@media only screen and (max-width: 576px) {
+	.title__content h1 {
+		font-size: 1.8rem;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	.title__content h2 {
+		font-size: 1.6rem;
+	}
+}
+
+.subtitle__item {
+	max-width: 350px;
+	min-height: 50px;
+}
+
+.button-form {
+	width: 300px;
+	height: 60px;
+	border-radius: 15px;
+}
+
+.level__decr {
+	border-left: 7px solid #28a745;
+}
+
+.level__line {
+	width: 100%;
+	height: 50px;
+}
+
+.gallery__image {
+	min-height: 350px;
+}
+
+.gallery__image_one {
+	background: url("../images/home.jpg") no-repeat 50% 50%;
+	background-size: cover;
+}
+
+.gallery__image_two {
+	background: url("../images/office.jpg") no-repeat 50% 50%;
+	background-size: cover;
+}
+
+.gallery__image_three {
+	background: url("../images/restaurant.jpg") no-repeat 50% 50%;
+	background-size: cover;
+}
+
+.gallery__image_four {
+	background: url("../images/magazine.jpg") no-repeat 50% 50%;
+	background-size: cover;
 }

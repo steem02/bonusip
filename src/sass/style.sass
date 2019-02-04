@@ -1,3 +1,59 @@
-body
-    background: #000
-    display: none
+@import includes/variables.sass
+
+.header
+	position: relative
+	background: url('../images/cam.jpg') no-repeat
+	background-size: cover
+	&__filter
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		background: #000
+		opacity: .7
+
+.navbar
+	margin-bottom: 200px
+
+.title
+	margin-bottom: 150px
+	&__content h1
+		@include max($sm)
+			font-size: 1.8rem
+	&__content h2
+		@include max($sm)
+			font-size: 1.6rem
+
+.subtitle
+	&__item
+		max-width: 350px
+		min-height: 50px
+
+.button-form
+	width: 300px
+	height: 60px
+	border-radius: 15px
+
+.level
+	&__decr
+		border-left: 7px solid $success
+	&__line
+		width: 100%
+		height: 50px
+.gallery
+	&__image
+		min-height: 350px
+		&_one
+			background: url('../images/home.jpg') no-repeat 50% 50%
+			background-size: cover
+		&_two
+			background: url('../images/office.jpg') no-repeat 50% 50%
+			background-size: cover
+		&_three
+			background: url('../images/restaurant.jpg') no-repeat 50% 50%
+			background-size: cover
+		&_four
+			background: url('../images/magazine.jpg') no-repeat 50% 50%
+			background-size: cover
+
