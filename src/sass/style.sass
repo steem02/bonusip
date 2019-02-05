@@ -1,8 +1,10 @@
 @import includes/variables.sass
-
+$font-family-base: 'Helvetica Neue'
+html
+	font-family: 'Helvetica Neue' !important
 .header
 	position: relative
-	background: url('../images/cam.jpg') no-repeat
+	background: url('../images/cam.jpg') no-repeat 50% 50%
 	background-size: cover
 	&__filter
 		position: absolute
@@ -45,15 +47,54 @@
 	&__image
 		min-height: 350px
 		&_one
+			// border: 1px solid $success
 			background: url('../images/home.jpg') no-repeat 50% 50%
 			background-size: cover
 		&_two
+			// border: 1px solid $success
 			background: url('../images/office.jpg') no-repeat 50% 50%
 			background-size: cover
 		&_three
+			// border: 1px solid $success
 			background: url('../images/restaurant.jpg') no-repeat 50% 50%
 			background-size: cover
 		&_four
+			// border: 1px solid $success
 			background: url('../images/magazine.jpg') no-repeat 50% 50%
 			background-size: cover
+.install
+	&__icon
+		svg
+			height: 148px
+	&__text
+		text-align: justify
+		border-top: 4px solid $dark 
 
+.info
+	height: 302px
+	background: url('../images/mobile.jpg') no-repeat 50% 50%
+	background-size: cover
+	&__text
+		max-width: 435px
+		background: rgba(255, 255, 255, 0.57)
+
+.slider
+	&__item
+		box-shadow: rgba(154, 154, 154, 0.2) 0px 2px 1px 2px
+		background: #08080808
+
+
+.slide
+	&__image
+		width: 100%
+		
+
+.howmuch
+	height: 230px
+	background: url('../images/family.jpg') no-repeat 40% 30%
+	background-size: 80%
+	&__text
+		max-width: 520px
+		background: rgba(255, 255, 255, 0.57)
+		@include min($md)
+			font-size: 3rem

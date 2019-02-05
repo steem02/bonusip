@@ -1,6 +1,10 @@
+html {
+	font-family: 'Helvetica Neue' !important;
+}
+
 .header {
 	position: relative;
-	background: url("../images/cam.jpg") no-repeat;
+	background: url("../images/cam.jpg") no-repeat 50% 50%;
 	background-size: cover;
 }
 
@@ -64,6 +68,53 @@
 .gallery__image_four {
 	background: url("../images/magazine.jpg") no-repeat 50% 50%;
 	background-size: cover;
+}
+
+.install__icon svg {
+	height: 148px;
+}
+
+.install__text {
+	text-align: justify;
+	border-top: 4px solid #343a40;
+}
+
+.info {
+	height: 302px;
+	background: url("../images/mobile.jpg") no-repeat 50% 50%;
+	background-size: cover;
+}
+
+.info__text {
+	max-width: 435px;
+	background: rgba(255, 255, 255, 0.57);
+}
+
+.slider__item {
+	-webkit-box-shadow: rgba(154, 154, 154, 0.2) 0px 2px 1px 2px;
+	        box-shadow: rgba(154, 154, 154, 0.2) 0px 2px 1px 2px;
+	background: #08080808;
+}
+
+.slide__image {
+	width: 100%;
+}
+
+.howmuch {
+	height: 230px;
+	background: url("../images/family.jpg") no-repeat 40% 30%;
+	background-size: 80%;
+}
+
+.howmuch__text {
+	max-width: 520px;
+	background: rgba(255, 255, 255, 0.57);
+}
+
+@media only screen and (min-width: 768px) {
+	.howmuch__text {
+		font-size: 3rem;
+	}
 }
 
 @media only screen and (max-width: 576px) {
