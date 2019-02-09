@@ -4,6 +4,7 @@ html
 	font-family: 'Helvetica Neue' !important
 .header
 	position: relative
+	// border: 1px solid $success
 	background: url('../images/cam.jpg') no-repeat 50% 50%
 	background-size: cover
 	&__filter
@@ -71,7 +72,8 @@ html
 		border-top: 4px solid $dark 
 
 .info
-	height: 302px
+	height: 300px
+	// border: 1px solid $success
 	background: url('../images/mobile.jpg') no-repeat 50% 50%
 	background-size: cover
 	&__text
@@ -81,7 +83,7 @@ html
 .slider
 	&__item
 		box-shadow: rgba(154, 154, 154, 0.2) 0px 2px 1px 2px
-		background: #08080808
+		background: $silver
 
 
 .slide
@@ -91,10 +93,87 @@ html
 
 .howmuch
 	height: 230px
+	// border: 1px solid $success
 	background: url('../images/family.jpg') no-repeat 40% 30%
-	background-size: 80%
+	background-size: cover
 	&__text
 		max-width: 520px
 		background: rgba(255, 255, 255, 0.57)
 		@include min($md)
 			font-size: 3rem
+
+.contactus
+	&__item
+		background: $silver
+
+.numbers
+	min-height: 300px
+	background: url('../images/1987.jpg') no-repeat 50% 50%
+	background-size: cover
+
+.questions
+	background: $silver
+	&__row
+		@include min($md)
+			max-width: 900px
+	&__card
+		border: none
+		cursor: pointer
+		background: $silver
+	&__btn
+		flex-grow: 1
+		flex-wrap: nowrap
+		border: none
+		text-align: left
+		cursor: pointer
+		&:active,
+		&:link,
+		&:visited
+			border: none
+			outline: none
+			box-shadow: none
+		// svg
+		// 	transform: rotate(90deg)
+.arrow
+	flex-grow: 0
+
+.maps
+	height: 640px
+
+
+.maps
+	@include min($lg)
+		position: relative
+	&__modal
+		@include min($lg)
+			position: absolute
+			top: 50px
+			left: 50px
+			z-index: 1
+			width: 500px
+			height: 320px
+			padding: 2rem
+			box-shadow: rgba(154, 154, 154, 0.2) 0px 2px 1px 2px
+			background: #fff
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,7 @@
+.bg-silver {
+	background: #eaeaea;
+}
+
 html {
 	font-family: 'Helvetica Neue' !important;
 }
@@ -92,7 +96,7 @@ html {
 }
 
 .info {
-	height: 302px;
+	height: 300px;
 	background: url("../images/mobile.jpg") no-repeat 50% 50%;
 	background-size: cover;
 }
@@ -104,7 +108,7 @@ html {
 
 .slider__item {
 	box-shadow: rgba(154, 154, 154, 0.2) 0px 2px 1px 2px;
-	background: #08080808;
+	background: #eaeaea;
 }
 
 .slide__image {
@@ -114,7 +118,7 @@ html {
 .howmuch {
 	height: 230px;
 	background: url("../images/family.jpg") no-repeat 40% 30%;
-	background-size: 80%;
+	background-size: cover;
 }
 
 .howmuch__text {
@@ -125,5 +129,73 @@ html {
 @media only screen and (min-width: 768px) {
 	.howmuch__text {
 		font-size: 3rem;
+	}
+}
+
+.contactus__item {
+	background: #eaeaea;
+}
+
+.numbers {
+	min-height: 300px;
+	background: url("../images/1987.jpg") no-repeat 50% 50%;
+	background-size: cover;
+}
+
+.questions {
+	background: #eaeaea;
+}
+
+@media only screen and (min-width: 768px) {
+	.questions__row {
+		max-width: 900px;
+	}
+}
+
+.questions__card {
+	border: none;
+	cursor: pointer;
+	background: #eaeaea;
+}
+
+.questions__btn {
+	flex-grow: 1;
+	flex-wrap: nowrap;
+	border: none;
+	text-align: left;
+	cursor: pointer;
+}
+
+.questions__btn:active, .questions__btn:link, .questions__btn:visited {
+	border: none;
+	outline: none;
+	box-shadow: none;
+}
+
+.arrow {
+	flex-grow: 0;
+}
+
+.maps {
+	height: 640px;
+}
+
+@media only screen and (min-width: 992px) {
+	.maps {
+		position: relative;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.maps__modal {
+		position: absolute;
+		top: 50px;
+		left: 50px;
+		z-index: 1;
+		width: 500px;
+		height: 320px;
+		padding: 2rem;
+		box-shadow: rgba(154, 154, 154, 0.2) 0px 2px 1px 2px;
+		background: #fff;
 	}
 }
