@@ -6,13 +6,38 @@ html {
 	font-family: 'Helvetica Neue' !important;
 }
 
-.header {
+.navbar {
+	background: rgba(0, 0, 0, 0.8);
+}
+
+.navbar-brand img {
+	width: 80px;
+}
+
+@media only screen and (min-width: 576px) {
+	.navbar-brand img {
+		width: 150px;
+	}
+}
+
+.navbar-collapse {
+	transition: height .3s ease-out;
+}
+
+.title {
 	position: relative;
+	padding-top: 300px;
 	background: url("../images/cam.jpg") no-repeat 50% 50%;
 	background-size: cover;
 }
 
-.header__filter {
+@media only screen and (max-width: 576px) {
+	.title {
+		padding-top: 200px;
+	}
+}
+
+.title__filter {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -22,12 +47,20 @@ html {
 	opacity: .7;
 }
 
-.navbar {
-	margin-bottom: 200px;
+.title__main {
+	margin-bottom: 150px;
 }
 
-.title {
-	margin-bottom: 150px;
+@media only screen and (max-width: 576px) {
+	.title__main {
+		margin-bottom: 100px;
+	}
+}
+
+@media screen and (min-width: 410px) and (max-width: 576px) {
+	.title__content h1 {
+		font-size: 2.5rem !important;
+	}
 }
 
 @media only screen and (max-width: 576px) {
@@ -48,7 +81,7 @@ html {
 }
 
 .button-form {
-	width: 300px;
+	width: 260px;
 	height: 60px;
 	border-radius: 15px;
 }
@@ -63,7 +96,15 @@ html {
 }
 
 .gallery__image {
+	position: relative;
 	min-height: 350px;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 576px) {
+	.gallery__image {
+		min-height: 500px;
+	}
 }
 
 .gallery__image_one {
@@ -84,6 +125,32 @@ html {
 .gallery__image_four {
 	background: url("../images/magazine.jpg") no-repeat 50% 50%;
 	background-size: cover;
+}
+
+.hidden {
+	width: 100%;
+}
+
+.gallery__image:hover .hidden {
+	opacity: 1;
+}
+
+.hidden {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	outline: 2px solid #fff;
+	outline-offset: -10px;
+	transition: all .4s ease-out;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+.hidden__title {
+	display: inline-block;
+	border-bottom: 2px solid red;
 }
 
 .install__icon svg {
@@ -136,6 +203,23 @@ html {
 	background: #eaeaea;
 }
 
+.access {
+	height: 400px;
+	background: url("../images/access.jpg") no-repeat 50% 50%;
+	background-size: cover;
+}
+
+.access__text {
+	max-width: 650px;
+	background: rgba(0, 0, 0, 0.57);
+}
+
+@media only screen and (min-width: 768px) {
+	.access__text {
+		font-size: 3rem;
+	}
+}
+
 .numbers {
 	min-height: 300px;
 	background: url("../images/1987.jpg") no-repeat 50% 50%;
@@ -143,7 +227,7 @@ html {
 }
 
 .questions {
-	background: #eaeaea;
+	background: #f4f3f3;
 }
 
 @media only screen and (min-width: 768px) {
@@ -155,7 +239,7 @@ html {
 .questions__card {
 	border: none;
 	cursor: pointer;
-	background: #eaeaea;
+	background: #f4f3f3;
 }
 
 .questions__btn {
@@ -172,12 +256,16 @@ html {
 	box-shadow: none;
 }
 
+.questions__collapse {
+	transition: all .3s ease-out;
+}
+
 .arrow {
 	flex-grow: 0;
 }
 
 .maps {
-	height: 640px;
+	min-height: 400px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -198,4 +286,15 @@ html {
 		box-shadow: rgba(154, 154, 154, 0.2) 0px 2px 1px 2px;
 		background: #fff;
 	}
+}
+
+footer {
+	height: 80px;
+	background: #C4C4C4;
+	color: #838383;
+}
+
+footer .box-logo svg {
+	width: 110px;
+	height: 27px;
 }

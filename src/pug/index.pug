@@ -9,10 +9,10 @@ html(lang="ru")
 		link(rel="stylesheet", href="css/build.css")
 	body
 		header.font-weight-bold.header.text-light
-			.header__filter
-			nav.navbar.navbar-expand-lg.px-md-5.pt-4.text-nowrap.navbar-dark
-				a.navbar-brand BonusIP
-				a.navbar-text.order-lg-last.text-success(href="tel:89991234567") 8 (999) 123-45-67
+			nav.navbar.navbar-expand-lg.px-md-5.pt-4.text-nowrap.navbar-dark.fixed-top
+				a.navbar-brand.m-0(href="index.html")
+					img(src="images/logo.svg", alt="")
+				a.navbar-text.ml-sm-n5.ml-lg-0.order-lg-last.text-success(href="tel:89991234567") 8 (999) 123-45-67
 				button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent')
 					span.navbar-toggler-icon
 				#navbarSupportedContent.collapse.navbar-collapse.mr-lg-4.mx-auto.mx-lg-0.justify-content-end
@@ -27,37 +27,35 @@ html(lang="ru")
 							a.nav-link(href="#") Вопросы
 						li.nav-item
 							a.nav-link(href="#") Контакты
-							
-		.title.row.no-gutters.justify-content-center.justify-content-xl-end
-			.col-xl-6.text-center.text-xl-left
-				.title__content.d-inline-block.text-left
-					h1.px-3.d-inline-block.bg-success.display-4 Видеонаблюдение
-					.w-100
-					h2.px-3.d-inline-block под ключ
-		.subtitle.container.mb-5.justify-content-center
-			.row
-				.col-12.col-md-4.mb-5.mb-md-0
-					.subtitle__item.row.mx-auto
-						.col-3
-							include images/asset1.svg
-						.col-9.border-left.border-success Индивидуальный подход к каждому клиенту
-				.col-12.col-md-4.mb-5.mb-md-0
-					.subtitle__item.row.mx-auto
-						.col-3
-							include images/asset3.svg
-						.col-9.border-left.border-success Обучение после установки
-				.col-12.col-md-4.mb-5.mb-md-0
-					.subtitle__item.row.mx-auto
-						.col-3
-							include images/asset2.svg
-						.col-9.border-left.border-success 1 год гарантии на работу и оборудование
-		.container.pb-5
-			.row.mb-5
-				.col-12.text-center
-					button.button-form.btn.btn-lg.btn-danger.rounded-5(type='button') Узнайте стоимость
-			.row
-				.col-12.text-center
-					include images/slide.svg
+		.container-fluid.title.text-light
+			.title__filter
+			.title__main.row.no-gutters.justify-content-center.justify-content-xl-end
+				.col-xl-6.text-center.text-xl-left
+					.title__content.d-inline-block.text-left
+						h1.px-3.d-inline-block.bg-success.display-4 Видеонаблюдение
+						.w-100
+						h2.px-3.d-inline-block под ключ
+			.subtitle.container.mb-5.justify-content-center
+				.row
+					.col-12.col-md-4.mb-5.mb-md-0
+						.subtitle__item.row.mx-auto
+							.col-3
+								include images/asset1.svg
+							.col-9.border-left.border-success Индивидуальный подход к каждому клиенту
+					.col-12.col-md-4.mb-5.mb-md-0
+						.subtitle__item.row.mx-auto
+							.col-3
+								include images/asset3.svg
+							.col-9.border-left.border-success Обучение после установки
+					.col-12.col-md-4.mb-5.mb-md-0
+						.subtitle__item.row.mx-auto
+							.col-3
+								include images/asset2.svg
+							.col-9.border-left.border-success 1 год гарантии на работу и оборудование
+			.container.pb-5
+				.row.mb-5
+					.col-12.text-center
+						button.button-form.btn.btn-lg.btn-danger.rounded-5(type='button') Узнайте стоимость
 		section.level.container.py-5.d-flex.align-items-center
 			.row(style='width: 100%')
 				.col-12.col-lg-6.mb-5.mb-lg-0
@@ -74,15 +72,27 @@ html(lang="ru")
 			h2.mb-5.font-weight-bold.text-center Где установить видеонаблюдение?
 			.container-fluid
 				.row.mb-lg-3.justify-content-between
-					.gallery__image.gallery__image_one.col-12.col-lg-auto.mb-3.mb-lg-0.mr-lg-3.d-flex.justify-content-end.align-items-center.flex-grow-1
-						h2.p-2.font-weight-bold.text-light.bg-success дом, квартира
-					.gallery__image.gallery__image_two.col-12.col-lg-6.mb-3.mb-lg-0.d-flex.align-items-center.flex-grow-1
+					.gallery__image.gallery__image_one.col-12.col-lg.mb-3.mb-lg-0.mr-lg-3.d-flex.justify-content-end.align-items-center
+						p.h2.p-2.font-weight-bold.text-light.bg-success дом, квартира
+						.hidden.px-4.px-sm-4.text-light.text-center
+							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold дом, квартира
+							p.hidden__text.text-justify Видеонаблюдение в доме или в квартире позволит вам увеличить безопасность вашего жилья. Вы сможете слидить за няней или другими постаронними людьми которые находятся в вашем доме. И сделать это можно через смартфон или компьютер с доступом в интернет. В случае противоправных действий в вашей квартире, вы сможете воспользоваться видеозаписью с камер видеонаблюдения.
+					.gallery__image.gallery__image_two.col-12.col-lg.mb-3.mb-lg-0.d-flex.align-items-center.flex-grow-1
 						h2.p-2.font-weight-bold.text-light.bg-success офис, предприятие
+						.hidden.px-4.px-sm-4.text-light.text-center
+							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold офис, предприятие
+							p.hidden__text.text-justify В любом офисном помещении или крупном предприятии установленные камеры видеонаблюдения, будут правой рукой для любого руководителя. Вы сможете наблюдать за своими подчинёнными. Выявлять недобросовестных работников. Анализировать поведение ваших сотрудников. И всегда, в режиме ONLINE следить за вашим бизнесом.
 				.row.mb-5
-					.gallery__image.gallery__image_three.col-12.col-lg-auto.mr-lg-3.mb-3.mb-lg-0.d-flex.justify-content-end.align-items-center.flex-grow-1
+					.gallery__image.gallery__image_three.col-12.col-lg.mr-lg-3.mb-3.mb-lg-0.d-flex.justify-content-end.align-items-center
 						h2.p-2.font-weight-bold.text-light.bg-success ресторан, кафе, бар
-					.gallery__image.gallery__image_four.col-12.col-lg-6.flex-grow-1.d-flex.align-items-center
+						.hidden.px-4.px-sm-4.text-light.text-center
+							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold ресторан, кафе, бар
+							p.hidden__text.text-justify Заведение с высокой посещаемостью людей - это главный кандидат для установки камер видеонаблюдения. Можетво черезвычайных ситуаций и возможных конфликтов можно избежать уже на начальной стадии. При помощи камер всегда легко доказать правду. Если у вас сеть заведений, тогда все камеры можно объъеденить в полноценную экосистему, имеющий доступ ко всем помещеням сразу.. 
+					.gallery__image.gallery__image_four.col-12.col-lg.d-flex.align-items-center
 						h2.p-2.font-weight-bold.text-light.bg-success склад, магазин
+						.hidden.px-4.px-sm-4.text-light.text-center
+							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold склад, магазин
+							p.hidden__text.text-justify Когда стоимость вашего имущества велика, камеры видеонаблюдения смогут обеспечить бдительный надзор. Благодаря разрешающей спосмобности камер, даже самый маленький предмет будет заметен. Вы сможете одновременно охватить большие площади и вести постоянный контроль за ними.
 		section.install
 			h2.mb-5.font-weight-bold.text-center Установка видеонаблюдения
 			.container
@@ -140,45 +150,53 @@ html(lang="ru")
 							p.contactus__item.col-12.col-md-2.m-0.p-0.display-1.text-center 03
 							.contactus__text.col-12.col-md-10.m-0.p-3.p-md-4.d-flex.align-items-center.text-light.bg-success 
 								span Наш идивидуальный подход к каждому клиенту позволяет более гибко и точно подобрать оборудование. В результате вы всегда будите получать только качественное изображение с камер.
+		.access.mb-5.d-flex.align-items-center
+			.container.font-weight-bold
+				h2.access__text.ml-auto.px-3.font-weight-bold.text-sm-right.text-light Сигнализации, системы контроля доступом
+					br
+					small.font-weight-bold.text-success Новинка
+		section.skud.mb-5.container
+			h2.mb-5.font-weight-bold.text-center Система контроля и управления доступом (СКУД)
+			p Система контроля и управления доступом - это автомотизированная система, в которую входят: камеры видеонаблюдения, замки с возможностью интерактивного доступа и большое количество охранных и пожаробезопасных датчиков. Благодаря этой системе Вы сможете следить и управлять доступом ваших сотрудников к рабочему месту. Вы всегда сможете узнать пришёл ли ваш сотрудник вовремя или опоздал. В какую конкретную дверь он зашёл. И сколько находился на рабочем месте. И система всегда вам предоставит видео конкртетного сотрудника по его запросу. Установка СКУД позволит вывести контроль вашего бизнеса на новый уровень.
 		.numbers.container-fluid.mb-5
 			.row
 				.col-6.col-md-4 1856
 				.col-6.col-md-4 575
 				.col-6.col-md-4 234
 				.col-6.col-md-4 63
-		.questions.container-fluid.mb-5
+		.questions.container-fluid
 			.querstions__row#accordion.accordion.row.justify-content-center
 					.col-12.col-md-8
 						.questions__card.card.my-2.d-flex.flex-row.justify-content-between.border-bottom
-							a.questions__btn.btn.pl-0(href="#one", data-toggle="collapse") Возможно распознать лицо или номер машины?
+							a.questions__btn.btn.pl-0.font-weight-bold(href="#one", data-toggle="collapse") Возможно распознать лицо или номер машины?
 							a.questions__btn.btn.arrow(href="#one", data-toggle="collapse")
 								include images/arrow.svg
-						.collapse#one(data-parent="#accordion")
-								p.card-body.ml-2.ml-md-4 Больше ничего спросить не хочешь? Просто доверься нам и ставь камеру, все будет круто.
+						.questions__collapse.collapse#one(data-parent="#accordion")
+								p.card-body.ml-2.ml-md-4 Благодаря высокому разарешению изобрадения Full HD, вы сможете разглядеть на видеозаписи как номер автомобиля, так и лица мимопроходящих людей.
 						.questions__card.card.my-2.d-flex.flex-row.justify-content-between.border-bottom
-							a.questions__btn.btn.pl-0(href="#two", data-toggle="collapse") Возможно получить качественное изображение ночью?
+							a.questions__btn.btn.pl-0.font-weight-bold(href="#two", data-toggle="collapse") Возможно получить качественное изображение ночью?
 							a.questions__btn.btn.arrow(href="#two", data-toggle="collapse")
 								include images/arrow.svg
-						.collapse#two(data-parent="#accordion")
-								p.card-body.ml-2.ml-md-4 Больше ничего спросить не хочешь? Просто доверься нам и ставь камеру, все будет круто.
+						.questions__collapse.collapse#two(data-parent="#accordion")
+								p.card-body.ml-2.ml-md-4 В камерах видеонаблюдения пристутствует функция записи видео в ночном режиме. Камера освещает объекты невидимыми для человеческого глаща лучами, что позволяет получить разборчивое изображение ночью.
 						.questions__card.card.my-2.d-flex.flex-row.justify-content-between.border-bottom
-							a.questions__btn.btn.pl-0(href="#three", data-toggle="collapse") Как ведёт себя камера при минусовых температурах?
+							a.questions__btn.btn.pl-0.font-weight-bold(href="#three", data-toggle="collapse") Как ведёт себя камера при минусовых температурах?
 							a.questions__btn.btn.arrow(href="#three", data-toggle="collapse")
 								include images/arrow.svg
-						.collapse#three(data-parent="#accordion")
-								p.card-body.ml-2.ml-md-4 Больше ничего спросить не хочешь? Просто доверься нам и ставь камеру, все будет круто.
+						.questions__collapse.collapse#three(data-parent="#accordion")
+								p.card-body.ml-2.ml-md-4 Сущестуют камеры специально предназначенные для улицы. Они имеют повышенную защиту к высоким и низким тепмературам, а так же устойчивы к влаге. Благодаря таким камерам, вы сможете получать четкое изобрадение даже при температуре -50°C
 						.questions__card.card.my-2.d-flex.flex-row.justify-content-between.border-bottom
-							a.questions__btn.btn.pl-0(href="#four", data-toggle="collapse") С какого устройства можно посмотреть отснятое изображение? 
+							a.questions__btn.btn.pl-0.font-weight-bold(href="#four", data-toggle="collapse") С какого устройства можно посмотреть отснятое изображение? 
 							a.questions__btn.btn.arrow(href="#four", data-toggle="collapse")
 								include images/arrow.svg
-						.collapse#four(data-parent="#accordion")
-								p.card-body.ml-2.ml-md-4 Больше ничего спросить не хочешь? Просто доверься нам и ставь камеру, все будет круто.
+						.questions__collapse.collapse#four(data-parent="#accordion")
+								p.card-body.ml-2.ml-md-4 Благодаря ip видеонаблюдению, вы сможете в реальном времени получить изобрадение с камер на своём телефоне или овычном компьютере с дступом в интернет. Внутренняя память позводит посмотреть видео, отснятое ранее.
 						.questions__card.card.my-2.d-flex.flex-row.justify-content-between.border-bottom
-							a.questions__btn.btn.pl-0(href="#five", data-toggle="collapse") Видео с камер защищено от других?
+							a.questions__btn.btn.pl-0.font-weight-bold(href="#five", data-toggle="collapse") Видео с камер защищено от других?
 							a.questions__btn.btn.arrow(href="#five", data-toggle="collapse")
 								include images/arrow.svg
-						.collapse#five(data-parent="#accordion")
-								p.card-body.ml-2.ml-md-4 Больше ничего спросить не хочешь? Просто доверься нам и ставь камеру, все будет круто.
+						.questions__collapse.collapse#five(data-parent="#accordion")
+								p.card-body.ml-2.ml-md-4 Да! Доступ к системе вдиеонаблюдения имеете только вы! При установке видеонаблюдения, вам предоставят логин и пароль для доступа. Благодаря этому вы сможете войти в систему. 
 
 		.maps
 			.maps__modal.container.mb-5.mb-lg-0
@@ -189,7 +207,15 @@ html(lang="ru")
 						p Адрес: г. Сергиев Посад
 						p Телефон: +7 (999) 123 45 67
 						p Почта: admin@bonusip.ru
-			script(type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Abb78764ebf30f3e666d35b5a32561945bcd7dd948f66d9fd6c9f8875dab0ae23&amp;width=100%25&amp;height=640&amp;lang=ru_RU&amp;scroll=true")
+			script(type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Abb78764ebf30f3e666d35b5a32561945bcd7dd948f66d9fd6c9f8875dab0ae23&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=false")
+		footer.container-fluid
+			.row.h-100.justify-content-between.align-items-center
+				.col-4 
+					p.m-0 &copy; 2019
+				.col-8.col-sm-8.text-right
+					span Производство сайта
+					span.box-logo.ml-3
+						include images/boxproject.svg
 
 		script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
 		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js", integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP", crossorigin="anonymous")

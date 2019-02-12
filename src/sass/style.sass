@@ -1,12 +1,28 @@
 @import includes/variables.sass
-$font-family-base: 'Helvetica Neue'
+
 html
 	font-family: 'Helvetica Neue' !important
-.header
+
+
+.navbar
+	background: rgba(0, 0, 0, 0.8)
+
+.navbar-brand
+	img
+		width: 80px
+		@include min($sm)
+			width: 150px
+
+.navbar-collapse
+	transition: height .3s ease-out
+
+.title
 	position: relative
-	// border: 1px solid $success
+	padding-top: 300px
 	background: url('../images/cam.jpg') no-repeat 50% 50%
 	background-size: cover
+	@include max($sm)
+		padding-top: 200px
 	&__filter
 		position: absolute
 		top: 0
@@ -15,13 +31,13 @@ html
 		left: 0
 		background: #000
 		opacity: .7
-
-.navbar
-	margin-bottom: 200px
-
-.title
-	margin-bottom: 150px
+	&__main
+		margin-bottom: 150px
+		@include max($sm)
+			margin-bottom: 100px
 	&__content h1
+		@media screen and (min-width: 410px) and (max-width: $sm)
+			font-size: 2.5rem !important
 		@include max($sm)
 			font-size: 1.8rem
 	&__content h2
@@ -34,7 +50,7 @@ html
 		min-height: 50px
 
 .button-form
-	width: 300px
+	width: 260px
 	height: 60px
 	border-radius: 15px
 
@@ -46,23 +62,53 @@ html
 		height: 50px
 .gallery
 	&__image
+		position: relative
 		min-height: 350px
+		cursor: pointer
+		@include max($sm)
+			min-height: 500px
 		&_one
-			// border: 1px solid $success
 			background: url('../images/home.jpg') no-repeat 50% 50%
 			background-size: cover
 		&_two
-			// border: 1px solid $success
 			background: url('../images/office.jpg') no-repeat 50% 50%
 			background-size: cover
 		&_three
-			// border: 1px solid $success
 			background: url('../images/restaurant.jpg') no-repeat 50% 50%
 			background-size: cover
 		&_four
-			// border: 1px solid $success
 			background: url('../images/magazine.jpg') no-repeat 50% 50%
 			background-size: cover
+		&__hidden
+
+
+// hover gallery
+
+.hidden
+	width: 100%
+.gallery
+	&__image
+		&:hover
+			.hidden
+				opacity: 1
+
+.hidden
+	opacity: 0
+	position: absolute
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	outline: 2px solid #fff
+	outline-offset: -10px
+	transition: all .4s ease-out
+	background: rgba(0,0,0,.8)
+	&__title
+		display: inline-block
+		border-bottom: 2px solid red
+
+
+
 .install
 	&__icon
 		svg
@@ -73,7 +119,6 @@ html
 
 .info
 	height: 300px
-	// border: 1px solid $success
 	background: url('../images/mobile.jpg') no-repeat 50% 50%
 	background-size: cover
 	&__text
@@ -93,7 +138,6 @@ html
 
 .howmuch
 	height: 230px
-	// border: 1px solid $success
 	background: url('../images/family.jpg') no-repeat 40% 30%
 	background-size: cover
 	&__text
@@ -106,20 +150,31 @@ html
 	&__item
 		background: $silver
 
+.access
+	height: 400px
+	background: url('../images/access.jpg') no-repeat 50% 50%
+	background-size: cover
+	&__text
+		max-width: 650px
+		background: rgba(0, 0, 0, 0.57)
+		@include min($md)
+			font-size: 3rem
+
+
 .numbers
 	min-height: 300px
 	background: url('../images/1987.jpg') no-repeat 50% 50%
 	background-size: cover
 
 .questions
-	background: $silver
+	background: #f4f3f3
 	&__row
 		@include min($md)
 			max-width: 900px
 	&__card
 		border: none
 		cursor: pointer
-		background: $silver
+		background: #f4f3f3
 	&__btn
 		flex-grow: 1
 		flex-wrap: nowrap
@@ -132,16 +187,15 @@ html
 			border: none
 			outline: none
 			box-shadow: none
+	&__collapse
+		transition: all .3s ease-out
 		// svg
 		// 	transform: rotate(90deg)
 .arrow
 	flex-grow: 0
 
 .maps
-	height: 640px
-
-
-.maps
+	min-height: 400px
 	@include min($lg)
 		position: relative
 	&__modal
@@ -156,8 +210,14 @@ html
 			box-shadow: rgba(154, 154, 154, 0.2) 0px 2px 1px 2px
 			background: #fff
 
-
-
+footer
+	height: 80px
+	background: #C4C4C4
+	color: #838383
+	.box-logo	
+		svg
+			width: 110px
+			height: 27px
 
 
 
