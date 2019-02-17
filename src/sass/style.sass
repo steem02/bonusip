@@ -1,3 +1,5 @@
+@import node_modules/@glidejs/glide/src/assets/sass/glide.core
+@import node_modules/@glidejs/glide/src/assets/sass/glide.theme
 @import includes/variables.sass
 
 html
@@ -165,6 +167,17 @@ html
 	min-height: 300px
 	background: url('../images/1987.jpg') no-repeat 50% 50%
 	background-size: cover
+	&__row
+		svg
+			max-width: 200px
+	&__descr
+		max-width: 300px
+		margin: 0 auto
+
+#circle
+	fill: none
+  stroke: $danger !important
+  stroke-width: 30px
 
 .questions
 	background: #f4f3f3
@@ -180,7 +193,10 @@ html
 		flex-wrap: nowrap
 		border: none
 		text-align: left
+		transition: all .3s ease-out
 		cursor: pointer
+		svg
+			transition: all .3s ease-out
 		&:active,
 		&:link,
 		&:visited
@@ -193,6 +209,9 @@ html
 		// 	transform: rotate(90deg)
 .arrow
 	flex-grow: 0
+	&_active
+		svg
+			transform: rotate(90deg)
 
 .maps
 	min-height: 400px
@@ -212,7 +231,7 @@ html
 
 footer
 	height: 80px
-	background: #C4C4C4
+	background: rgba(0, 0, 0, 0.8)
 	color: #838383
 	.box-logo	
 		svg
