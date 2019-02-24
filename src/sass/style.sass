@@ -4,7 +4,8 @@
 
 html
 	font-family: 'Helvetica Neue' !important
-
+ol
+	list-style-type: square
 
 .navbar
 	background: rgba(0, 0, 0, 0.8)
@@ -119,6 +120,18 @@ html
 		text-align: justify
 		border-top: 4px solid $dark 
 
+.examples
+	height: 240px
+	line-height: 240px
+	background: $silver
+	&__btn
+		height: 120px
+		// width: 40%
+		// min-width: 300px
+		// max-width: 600px
+		font-size: 2rem
+		border-radius: 15px
+
 .info
 	height: 300px
 	background: url('../images/mobile.jpg') no-repeat 50% 50%
@@ -170,14 +183,52 @@ html
 	&__row
 		svg
 			max-width: 200px
+			text
+				font-size: 3.5rem
+				fill: #fff
+
 	&__descr
 		max-width: 300px
 		margin: 0 auto
+// анимации svg кругов
 
-#circle
-	fill: none
-  stroke: $danger !important
-  stroke-width: 30px
+.circle circle
+	stroke-dasharray: 630
+	stroke-dashoffset: 630
+	fill: rgba(0, 0, 0, 0)
+
+.animate-go circle
+	animation: strokeanim 3s ease-out
+	animation-fill-mode: forwards
+
+@keyframes strokeanim
+	to
+		stroke-dashoffset: 0
+		fill: rgba(0, 0, 0, 0.5)
+
+// схемы подключений
+
+.scheme
+	&__title
+		max-width: 400px
+		padding: 1rem
+		background: $silver
+	&__descr
+		padding: 1rem
+		background: $silver
+	&__image-iso,
+	&__image-ontop
+		height: 364px
+		background-position: 50% 50%
+		background-repeat: no-repeat
+		background-size: contain
+		background-color: $success
+	&__image-ontop
+		height: 300px
+		@include min($md)
+			height: 500px
+		@include min($lg)
+			height: 680px
 
 .questions
 	background: #f4f3f3
@@ -205,10 +256,10 @@ html
 			box-shadow: none
 	&__collapse
 		transition: all .3s ease-out
-		// svg
-		// 	transform: rotate(90deg)
+
 .arrow
 	flex-grow: 0
+	transform: scale(.7)
 	&_active
 		svg
 			transform: rotate(90deg)

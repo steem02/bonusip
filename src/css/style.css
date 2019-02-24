@@ -159,6 +159,10 @@ html {
 	font-family: 'Helvetica Neue' !important;
 }
 
+ol {
+	list-style-type: square;
+}
+
 .navbar {
 	background: rgba(0, 0, 0, 0.8);
 }
@@ -315,6 +319,18 @@ html {
 	border-top: 4px solid #343a40;
 }
 
+.examples {
+	height: 240px;
+	line-height: 240px;
+	background: #eaeaea;
+}
+
+.examples__btn {
+	height: 120px;
+	font-size: 2rem;
+	border-radius: 15px;
+}
+
 .info {
 	height: 300px;
 	background: url("../images/mobile.jpg") no-repeat 50% 50%;
@@ -383,15 +399,67 @@ html {
 	max-width: 200px;
 }
 
+.numbers__row svg text {
+	font-size: 3.5rem;
+	fill: #fff;
+}
+
 .numbers__descr {
 	max-width: 300px;
 	margin: 0 auto;
 }
 
-#circle {
-	fill: none;
-	fill-stroke: #dc3545 !important;
-	fill-stroke-width: 30px;
+.circle circle {
+	stroke-dasharray: 630;
+	stroke-dashoffset: 630;
+	fill: rgba(0, 0, 0, 0);
+}
+
+.animate-go circle {
+	animation: strokeanim 3s ease-out;
+	animation-fill-mode: forwards;
+}
+
+@keyframes strokeanim {
+	to {
+		stroke-dashoffset: 0;
+		fill: rgba(0, 0, 0, 0.5);
+	}
+}
+
+.scheme__title {
+	max-width: 400px;
+	padding: 1rem;
+	background: #eaeaea;
+}
+
+.scheme__descr {
+	padding: 1rem;
+	background: #eaeaea;
+}
+
+.scheme__image-iso, .scheme__image-ontop {
+	height: 364px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-color: #28a745;
+}
+
+.scheme__image-ontop {
+	height: 300px;
+}
+
+@media only screen and (min-width: 768px) {
+	.scheme__image-ontop {
+		height: 500px;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.scheme__image-ontop {
+		height: 680px;
+	}
 }
 
 .questions {
@@ -435,6 +503,7 @@ html {
 
 .arrow {
 	flex-grow: 0;
+	transform: scale(0.7);
 }
 
 .arrow_active svg {
