@@ -193,10 +193,6 @@ html {
 	font-family: 'Helvetica Neue' !important;
 }
 
-ol {
-	list-style-type: square;
-}
-
 .navbar {
 	background: rgba(0, 0, 0, 0.8);
 }
@@ -229,6 +225,10 @@ ol {
 
 .title__main {
 	margin-bottom: 150px;
+}
+
+.title__content h1 {
+	max-width: 550px;
 }
 
 .subtitle__item {
@@ -304,8 +304,14 @@ ol {
 	border-bottom: 2px solid red;
 }
 
+.install__item-wrap {
+	width: 266px;
+	min-height: 400px;
+	background: #eaeaea;
+}
+
 .install__icon svg {
-	height: 148px;
+	height: 250px;
 }
 
 .install__text {
@@ -346,24 +352,17 @@ ol {
 	width: 100%;
 }
 
-.howmuch {
-	height: 230px;
-	background: url("../images/family.jpg") no-repeat 40% 30%;
-	background-size: cover;
-}
-
-.howmuch__text {
-	max-width: 520px;
-	background: rgba(255, 255, 255, 0.57);
-}
-
 .contactus__item {
 	background: #eaeaea;
 }
 
+.contactus__text {
+	min-height: 67px;
+}
+
 .access {
 	height: 400px;
-	background: url("../images/access.jpg") no-repeat 50% 50%;
+	background: url("../images/lock.png") no-repeat 50% 50%;
 	background-size: cover;
 }
 
@@ -440,6 +439,35 @@ ol {
 
 .scheme__image-ontop {
 	height: 300px;
+}
+
+.scheme__yard-list {
+	margin: 0 auto;
+	background: #eaeaea;
+}
+
+.scheme ul {
+	list-style-type: square;
+}
+
+.scheme ul li {
+	font-weight: 700;
+}
+
+.howmuch {
+	height: 230px;
+	background: url("../images/family.jpg") no-repeat 40% 45%;
+	background-size: cover;
+}
+
+.howmuch__text {
+	max-width: 520px;
+	background: rgba(255, 255, 255, 0.57);
+}
+
+.skud ul {
+	list-style: none;
+	padding: 0;
 }
 
 .questions {
@@ -526,14 +554,17 @@ footer .box-logo svg {
 }
 
 @media only screen and (min-width: 768px) {
-	.howmuch__text {
-		font-size: 3rem;
-	}
 	.access__text {
 		font-size: 3rem;
 	}
 	.scheme__image-ontop {
 		height: 500px;
+	}
+	.scheme__yard-list {
+		width: 50%;
+	}
+	.howmuch__text {
+		font-size: 3rem;
 	}
 	.questions__row {
 		max-width: 900px;

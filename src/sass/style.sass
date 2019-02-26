@@ -4,8 +4,6 @@
 
 html
 	font-family: 'Helvetica Neue' !important
-ol
-	list-style-type: square
 
 .navbar
 	background: rgba(0, 0, 0, 0.8)
@@ -39,6 +37,7 @@ ol
 		@include max($sm)
 			margin-bottom: 100px
 	&__content h1
+		max-width: 550px
 		@media screen and (min-width: 410px) and (max-width: $sm)
 			font-size: 2.5rem !important
 		@include max($sm)
@@ -113,9 +112,13 @@ ol
 
 
 .install
+	&__item-wrap
+		width: 266px
+		min-height: 400px
+		background: $silver
 	&__icon
 		svg
-			height: 148px
+			height: 250px
 	&__text
 		text-align: justify
 		border-top: 4px solid $dark 
@@ -126,9 +129,6 @@ ol
 	background: $silver
 	&__btn
 		height: 120px
-		// width: 40%
-		// min-width: 300px
-		// max-width: 600px
 		font-size: 2rem
 		border-radius: 15px
 
@@ -151,23 +151,15 @@ ol
 		width: 100%
 		
 
-.howmuch
-	height: 230px
-	background: url('../images/family.jpg') no-repeat 40% 30%
-	background-size: cover
-	&__text
-		max-width: 520px
-		background: rgba(255, 255, 255, 0.57)
-		@include min($md)
-			font-size: 3rem
-
 .contactus
 	&__item
 		background: $silver
+	&__text
+		min-height: 67px
 
 .access
 	height: 400px
-	background: url('../images/access.jpg') no-repeat 50% 50%
+	background: url('../images/lock.png') no-repeat 50% 50%
 	background-size: cover
 	&__text
 		max-width: 650px
@@ -229,6 +221,30 @@ ol
 			height: 500px
 		@include min($lg)
 			height: 680px
+	&__yard-list
+		margin: 0 auto
+		background: $silver
+		@include min($md)
+			width: 50%
+
+	ul
+		list-style-type: square
+		li
+			font-weight: bold
+
+.howmuch
+	height: 230px
+	background: url('../images/family.jpg') no-repeat 40% 45%
+	background-size: cover
+	&__text
+		max-width: 520px
+		background: rgba(255, 255, 255, 0.57)
+		@include min($md)
+			font-size: 3rem
+.skud
+	ul
+		list-style: none
+		padding: 0
 
 .questions
 	background: #f4f3f3
