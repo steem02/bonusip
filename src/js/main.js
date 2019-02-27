@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	//	переменные для анимаций по скроллу
 	const addClass = 'animate-go';
 	const circle = $('.circle');
-
+	const line = $('.level__line');
 	// показ бэкграунда из data атрибутов data-big, data-small (jQuery)
 
 	function loadImage(str, match, elem){
@@ -30,30 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		match.addListener(eventWin);
 	}
 
-	/**
-	*	jQuery
-	* выполнение действий с элементом при скролле
-	*	@param {object} obj
-	*		@param {callback} show действие при видимости эл-та
-	* 	@param {callback} hide дуйствие при исчезании эл-та
-	*		@param {object} elems jQuery массив элементов
-	*		@param {number} position расстояние до появления эл-та
-	*/
-	function scrollAnimate(obj) {
-		$(window).scroll(function() {
-			const scroll = $(this).scrollTop() + $(this).height();
-			const position = obj.position || 0;
-			const hide = obj.hide.bind(obj) || false;
-			obj.elems.each((i, val) => {
-				const pos = $(val).offset().top;
-				if (pos < (scroll - position)) {
-					obj.show(val);
-				} else {
-					if (hide) hide(val);
-				}
-			})
-		});
-	}
 	/**
 	* Функция анимации
 	* @param {object}
@@ -85,35 +61,97 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	  });
 	}
-
-	loadImage(mqmd, mq, imagesForLoad);
-	scrollAnimate({
-		elems: circle,
-		status: false,
-		show: function(elem) {
-			if (!this.status) {
-				$(elem).addClass(addClass);
-				animate({
-					duration: 3000,
-					timing: function(timeFraction) {
-						return timeFraction;
-					},
-					draw: function(progress) {
-						$(elem).find('text').each((i,v) => {
-							const val = $(v).data('num');
-							$(v).text(Math.round(progress*val));
-						});
+	/**
+	* jQuery
+	* выполнение действий с элементом при скролле
+	*	@param {array} arr
+	*		@param {obj}
+	*			@param {object} elems jQuery массив элементов
+	*			@param {array} status пустой массив для отслеживания статуса вкл выкл
+	*			@param {number} position расстояние до появления эл-та
+	*			@param {callback} show действие при показе эл-та
+	*	 		@param {callback} hide действие при исчезании эл-та
+	*/
+	function scrollAnimate(arr) {
+		$(window).scroll(function() {
+			const scroll = $(this).scrollTop() + $(this).height();
+			for (let i = 0; i < arr.length; i++) {
+				const position = arr[i].position || 0;
+				const hide = arr[i].hide.bind(arr[i]) || false;
+				arr[i].elems.each((o, val) => {
+					const pos = $(val).offset().top;
+					if (pos < (scroll - position)) {
+						arr[i].show(o, val);
+					} else {
+						if (hide) hide(o,val);
 					}
-				});
-				this.status = true;
+				})
 			}
-		}, 
-		hide: function(elem) {
-			$(elem).removeClass(addClass);
-			$(elem).find('text').text('');
-			this.status = false;
+		});
+	}
+	loadImage(mqmd, mq, imagesForLoad);
+
+	// вызов анимации при скролле на элементы, параметром передается массив с объектами
+
+	scrollAnimate([
+		// безопасность
+		{
+			elems: line,
+			status: [],
+			show: function(i, elem) {
+					if (!this.status[i]) {
+						const data = $(elem).data('width');
+						animate({
+							duration: 3000,
+							timing: function(timeFraction) {
+								return timeFraction;
+							},
+							draw: function(progress) {
+								const pr = Math.round(progress*data);
+								$(elem).css('width', `${pr}%`).find('span').text(`${pr}%`);
+							}
+						});
+
+
+						
+						this.status[i] = true;
+					}
+			}, 
+			hide: function(i, elem) {
+				$(elem).css('width', ``).find('span').text(`0%`);
+				this.status[i] = false;
+			}
+		},
+		// svg круги со статистикой
+		{
+			elems: circle,
+			status: false,
+			show: function(i, elem) {
+					if (!this.status) {
+						$(elem).addClass(addClass);
+						animate({
+							duration: 3000,
+							timing: function(timeFraction) {
+								return timeFraction;
+							},
+							draw: function(progress) {
+								$(elem).find('text').each((i,v) => {
+									const val = $(v).data('num');
+									$(v).text(Math.round(progress*val));
+								});
+							}
+						});
+						this.status = true;
+					}
+			}, 
+			hide: function(i, elem) {
+					$(elem).removeClass(addClass);
+					$(elem).find('text').text('');
+					this.status = false;
+			}
 		}
-	});
+	]);
+	
 	//	вопросы. событие раскрытия.
 	$('.questions__collapse').on('show.bs.collapse', function () {
  		const id = $(this).attr('id');

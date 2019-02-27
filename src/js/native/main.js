@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var mq = window.matchMedia(mqmd); //	переменные для анимаций по скроллу
 
   var addClass = 'animate-go';
-  var circle = $('.circle'); // показ бэкграунда из data атрибутов data-big, data-small (jQuery)
+  var circle = $('.circle');
+  var line = $('.level__line'); // показ бэкграунда из data атрибутов data-big, data-small (jQuery)
 
   function loadImage(str, match, elem) {
     function eventWin(e) {
@@ -26,33 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     eventWin(match);
     match.addListener(eventWin);
-  }
-  /**
-  *	jQuery
-  * выполнение действий с элементом при скролле
-  *	@param {object} obj
-  *		@param {callback} show действие при видимости эл-та
-  * 	@param {callback} hide дуйствие при исчезании эл-та
-  *		@param {object} elems jQuery массив элементов
-  *		@param {number} position расстояние до появления эл-та
-  */
-
-
-  function scrollAnimate(obj) {
-    $(window).scroll(function () {
-      var scroll = $(this).scrollTop() + $(this).height();
-      var position = obj.position || 0;
-      var hide = obj.hide.bind(obj) || false;
-      obj.elems.each(function (i, val) {
-        var pos = $(val).offset().top;
-
-        if (pos < scroll - position) {
-          obj.show(val);
-        } else {
-          if (hide) hide(val);
-        }
-      });
-    });
   }
   /**
   * Функция анимации
@@ -82,12 +56,74 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+  /**
+  * jQuery
+  * выполнение действий с элементом при скролле
+  *	@param {array} arr
+  *		@param {obj}
+  *			@param {object} elems jQuery массив элементов
+  *			@param {array} status пустой массив для отслеживания статуса вкл выкл
+  *			@param {number} position расстояние до появления эл-та
+  *			@param {callback} show действие при показе эл-та
+  *	 		@param {callback} hide действие при исчезании эл-та
+  */
 
-  loadImage(mqmd, mq, imagesForLoad);
-  scrollAnimate({
+
+  function scrollAnimate(arr) {
+    $(window).scroll(function () {
+      var scroll = $(this).scrollTop() + $(this).height();
+
+      var _loop = function _loop(i) {
+        var position = arr[i].position || 0;
+        var hide = arr[i].hide.bind(arr[i]) || false;
+        arr[i].elems.each(function (o, val) {
+          var pos = $(val).offset().top;
+
+          if (pos < scroll - position) {
+            arr[i].show(o, val);
+          } else {
+            if (hide) hide(o, val);
+          }
+        });
+      };
+
+      for (var i = 0; i < arr.length; i++) {
+        _loop(i);
+      }
+    });
+  }
+
+  loadImage(mqmd, mq, imagesForLoad); // вызов анимации при скролле на элементы, параметром передается массив с объектами
+
+  scrollAnimate([// безопасность
+  {
+    elems: line,
+    status: [],
+    show: function show(i, elem) {
+      if (!this.status[i]) {
+        var data = $(elem).data('width');
+        animate({
+          duration: 3000,
+          timing: function timing(timeFraction) {
+            return timeFraction;
+          },
+          draw: function draw(progress) {
+            var pr = Math.round(progress * data);
+            $(elem).css('width', "".concat(pr, "%")).find('span').text("".concat(pr, "%"));
+          }
+        });
+        this.status[i] = true;
+      }
+    },
+    hide: function hide(i, elem) {
+      $(elem).css('width', "").find('span').text("0%");
+      this.status[i] = false;
+    }
+  }, // svg круги со статистикой
+  {
     elems: circle,
     status: false,
-    show: function show(elem) {
+    show: function show(i, elem) {
       if (!this.status) {
         $(elem).addClass(addClass);
         animate({
@@ -105,12 +141,12 @@ document.addEventListener('DOMContentLoaded', function () {
         this.status = true;
       }
     },
-    hide: function hide(elem) {
+    hide: function hide(i, elem) {
       $(elem).removeClass(addClass);
       $(elem).find('text').text('');
       this.status = false;
     }
-  }); //	вопросы. событие раскрытия.
+  }]); //	вопросы. событие раскрытия.
 
   $('.questions__collapse').on('show.bs.collapse', function () {
     var id = $(this).attr('id');

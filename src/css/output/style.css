@@ -193,6 +193,10 @@ html {
 	font-family: 'Helvetica Neue' !important;
 }
 
+.btn {
+	border-radius: 15px;
+}
+
 .navbar {
 	background: rgba(0, 0, 0, 0.8);
 }
@@ -239,16 +243,21 @@ html {
 .button-form {
 	width: 260px;
 	height: 60px;
-	border-radius: 15px;
 }
 
 .level__decr {
 	border-left: 7px solid #28a745;
 }
 
-.level__line {
-	width: 100%;
+.level__progress {
 	height: 50px;
+}
+
+.level__line {
+	width: 0;
+	font-size: 2rem;
+	-webkit-transition: none;
+	transition: none;
 }
 
 .gallery__image {
@@ -362,7 +371,7 @@ html {
 
 .access {
 	height: 400px;
-	background: url("../images/lock.png") no-repeat 50% 50%;
+	background: url("../images/lock.jpg") no-repeat 50% 50%;
 	background-size: cover;
 }
 

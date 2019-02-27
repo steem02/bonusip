@@ -10,23 +10,23 @@ html(lang="ru")
 	body
 		header.font-weight-bold.header.text-light
 			nav.navbar.navbar-expand-lg.px-md-5.text-nowrap.navbar-dark.fixed-top
-				a.navbar-brand.m-0(href="index.html")
-					img(src="images/logo.svg", alt="")
-				a.navbar-text.ml-sm-n5.ml-lg-0.order-lg-last.text-success(href="tel:89991234567") 8 (999) 123-45-67
+				a.navbar-brand.m-0(href="index.html" title="Лого")
+					img(src="images/logo.svg", alt="логотип сайта" title="логотип сайта")
+				a.navbar-text.ml-sm-n5.ml-lg-0.order-lg-last.text-success(href="tel:89991234567" title="Номер телефона") 8 (999) 123-45-67
 				button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent')
 					span.navbar-toggler-icon
 				#navbarSupportedContent.collapse.navbar-collapse.mr-lg-4.mx-auto.mx-lg-0.justify-content-end
 					ul.navbar-nav.text-center
 						li.nav-item.active
-							a.nav-link(href="#") Главная
+							a.nav-link(href="#" title="Главная") Главная
 						li.nav-item
-							a.nav-link(href="#") Где установить
+							a.nav-link(href="#" title="Где установить") Где установить
 						li.nav-item
-							a.nav-link(href="#") СКУД
+							a.nav-link(href="#" title="СКУД") СКУД
 						li.nav-item 
-							a.nav-link(href="#") Вопросы
+							a.nav-link(href="#" title="Вопросы") Вопросы
 						li.nav-item
-							a.nav-link(href="#") Контакты
+							a.nav-link(href="#" title="Контакты") Контакты
 		.container-fluid.title.text-light
 			.title__filter
 			.title__main.row.no-gutters.justify-content-center.justify-content-xl-end
@@ -65,9 +65,13 @@ html(lang="ru")
 				.col-12.col-lg-6.d-flex.align-items-center
 					.level__animate.flex-grow-1
 						p Стоимость страхования имущества до установки камер
-						.level__line.mb-2.bg-danger
+						.level__progress.progress.mb-2
+							.level__line.progress-bar.text-right.bg-danger(data-width="100")
+								span.px-2 0%
 						p Стоимость страхования имущества после установки камер
-						.level__line.bg-success
+						.level__progress.progress
+							.level__line.progress-bar.text-right.bg-success(data-width="60")
+								span.px-2 0%
 		section.gallery
 			h2.mb-5.font-weight-bold.text-center Где установить видеонаблюдение?
 			.container-fluid
@@ -77,22 +81,26 @@ html(lang="ru")
 						.hidden.px-4.px-sm-4.text-light.text-center
 							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold дом, квартира
 							p.hidden__text.text-justify Видеонаблюдение в доме или в квартире позволит вам увеличить безопасность вашего жилья. Вы сможете следить за няней или другими посторонними людьми, которые находятся в вашем доме. И сделать это можно через смартфон или компьютер с доступом в интернет. В случае противоправных действий в вашей квартире, вы сможете воспользоваться видеозаписью с камер видеонаблюдения.
+							button.btn.btn-lg.btn-danger.rounded-5(type='button') Схема установки 
 					.gallery__image.gallery__image_two.col-12.col-lg.mb-3.mb-lg-0.d-flex.align-items-center.flex-grow-1
 						h2.p-2.font-weight-bold.text-light.bg-success офис, предприятие
 						.hidden.px-4.px-sm-4.text-light.text-center
 							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold офис, предприятие
 							p.hidden__text.text-justify В любом офисном помещении или крупном предприятии установленные камеры видеонаблюдения, будут правой рукой для любого руководителя. Вы сможете наблюдать за своими подчинёнными. Выявлять недобросовестных работников. Анализировать поведение ваших сотрудников. И всегда, в режиме ONLINE следить за вашим бизнесом.
+							button.btn.btn-lg.btn-danger.rounded-5(type='button') Схема установки
 				.row.mb-5
 					.gallery__image.gallery__image_three.col-12.col-lg.mr-lg-3.mb-3.mb-lg-0.d-flex.justify-content-end.align-items-center
 						h2.p-2.font-weight-bold.text-light.bg-success ресторан, кафе, бар
 						.hidden.px-4.px-sm-4.text-light.text-center
 							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold ресторан, кафе, бар
 							p.hidden__text.text-justify Заведение с высокой посещаемостью людей - это главный кандидат для установки камер видеонаблюдения. Множество чрезвычайных ситуаций и возможных конфликтов можно избежать уже на начальной стадии. При помощи камер всегда легко доказать правду. Если у вас сеть заведений, тогда все камеры можно объединить в полноценную экосистему, имеющий доступ ко всем помещениям сразу.
+							button.btn.btn-lg.btn-danger.rounded-5(type='button') Схема установки
 					.gallery__image.gallery__image_four.col-12.col-lg.d-flex.align-items-center
 						h2.p-2.font-weight-bold.text-light.bg-success склад, магазин
 						.hidden.px-4.px-sm-4.text-light.text-center
 							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold склад, магазин
 							p.hidden__text.text-justify Когда стоимость вашего имущества велика, камеры видеонаблюдения смогут обеспечить бдительный надзор. Благодаря разрешающей способности камер, даже самый маленький предмет будет заметен. Вы сможете одновременно охватить большие площади и вести постоянный контроль за ними.
+							button.btn.btn-lg.btn-danger.rounded-5(type='button') Схема установки
 		section.install
 			h2.mb-5.font-weight-bold.text-center Установка видеонаблюдения
 			.container
@@ -141,30 +149,7 @@ html(lang="ru")
 								span Индивидуальный подход к каждому клиенту.
 		section.examples.row.mb-5.no-gutters.justify-content-center.align-items-center
 			a.col-10.col-md-8.col-lg-4.examples__btn.btn.btn-lg.btn-danger.d-flex.align-items-center.justify-content-center(href='https://vk.com') Примеры наших работ
-		.numbers.mb-5.d-flex.align-items-center
-			.container
-				.numbers__row.row.text-center.circle
-					.col-12.col-sm-6.col-md-3.my-5.my-md-0 
-						<svg viewbox="-15 -15 230 230"><circle  r="100" cx="100" cy="100" fill="none" stroke="#dc3545" stroke-width="30"/>
-						<text x="100" y="100" fill="#fff" font-size="60" dominant-baseline="middle" text-anchor="middle" data-num="1856"></text> 
-						</svg>
-						p.numbers__descr.mt-2.py-1.bg-danger.text-light Установленных систем
-					.col-12.col-sm-6.col-md-3.my-5.my-md-0 
-						<svg viewbox="-15 -15 230 230"><circle  r="100" cx="100" cy="100" fill="none" stroke="#dc3545" stroke-width="30"/>
-						<text x="100" y="100" fill="#fff" font-size="60" dominant-baseline="middle" text-anchor="middle" data-num="575"></text> 
-						</svg>
-						p.numbers__descr.mt-2.py-1.bg-danger.text-light Довольных клиентов
-					.col-12.col-sm-6.col-md-3.my-5.my-md-0
-						<svg viewbox="-15 -15 230 230"><circle  r="100" cx="100" cy="100" fill="none" stroke="#dc3545" stroke-width="30"/>
-						<text x="100" y="100" fill="#fff" font-size="60" dominant-baseline="middle" text-anchor="middle" data-num="234"></text> 
-						</svg>
-						p.numbers__descr.mt-2.py-1.bg-danger.text-light Защищенных дома
-					.col-12.col-sm-6.col-md-3.my-5.my-md-0
-						<svg viewbox="-15 -15 230 230"><circle  r="100" cx="100" cy="100" fill="none" stroke="#dc3545" stroke-width="30"/>
-						<text x="100" y="100" fill="#fff" font-size="60" dominant-baseline="middle" text-anchor="middle" data-num="63"></text> 
-						</svg>
-						p.numbers__descr.mt-2.py-1.bg-danger.text-light Взломов остановлено
-		.scheme.mb-5
+		section.scheme.mb-5
 			.container.mb-5
 				.row.no-gutters.justify-content-between
 					.col-md-4.col-lg-4.d-flex.align-items-center
@@ -263,8 +248,6 @@ html(lang="ru")
 		.access.mb-5.d-flex.align-items-center
 			.container.font-weight-bold
 				h2.access__text.ml-auto.px-3.font-weight-bold.text-sm-right.text-light Сигнализации, системы контроля доступом
-					br
-					small.font-weight-bold.text-success Новинка
 		section.skud.mb-5.container
 			h2.mb-5.font-weight-bold.text-center Система контроля и управления доступом (СКУД)
 			p Система контроля и управления доступом - это автоматизированная система, в которую входят: камеры видеонаблюдения, замки с возможностью интерактивного доступа и большое количество охранных и пожаробезопасных датчиков. 
@@ -277,6 +260,29 @@ html(lang="ru")
 				li #[i - автоматизация снятия/включения охранного режима; управление работой подсистем (видеофиксации, датчиков движения и др.);]
 				li #[i - открывание блокировок дверей при получении соответствующих сигналов с датчиков пожарной сигнализации.]
 			p Установка СКУД позволит вывести контроль вашего бизнеса на новый уровень.
+		.numbers.d-flex.align-items-center
+			.container
+				.numbers__row.row.text-center.circle
+					.col-12.col-sm-6.col-md-3.my-5.my-md-0 
+						<svg viewbox="-15 -15 230 230"><circle  r="100" cx="100" cy="100" fill="none" stroke="#dc3545" stroke-width="30"/>
+						<text x="100" y="100" fill="#fff" font-size="60" dominant-baseline="middle" text-anchor="middle" data-num="1856"></text> 
+						</svg>
+						p.numbers__descr.mt-2.py-1.bg-danger.text-light Установленных систем
+					.col-12.col-sm-6.col-md-3.my-5.my-md-0 
+						<svg viewbox="-15 -15 230 230"><circle  r="100" cx="100" cy="100" fill="none" stroke="#dc3545" stroke-width="30"/>
+						<text x="100" y="100" fill="#fff" font-size="60" dominant-baseline="middle" text-anchor="middle" data-num="575"></text> 
+						</svg>
+						p.numbers__descr.mt-2.py-1.bg-danger.text-light Довольных клиентов
+					.col-12.col-sm-6.col-md-3.my-5.my-md-0
+						<svg viewbox="-15 -15 230 230"><circle  r="100" cx="100" cy="100" fill="none" stroke="#dc3545" stroke-width="30"/>
+						<text x="100" y="100" fill="#fff" font-size="60" dominant-baseline="middle" text-anchor="middle" data-num="234"></text> 
+						</svg>
+						p.numbers__descr.mt-2.py-1.bg-danger.text-light Защищенных дома
+					.col-12.col-sm-6.col-md-3.my-5.my-md-0
+						<svg viewbox="-15 -15 230 230"><circle  r="100" cx="100" cy="100" fill="none" stroke="#dc3545" stroke-width="30"/>
+						<text x="100" y="100" fill="#fff" font-size="60" dominant-baseline="middle" text-anchor="middle" data-num="63"></text> 
+						</svg>
+						p.numbers__descr.mt-2.py-1.bg-danger.text-light Взломов остановлено
 		.questions
 			.container
 				.querstions__row.row.py-5#accordion.accordion.justify-content-center
@@ -319,7 +325,7 @@ html(lang="ru")
 						p Адрес: г. Сергиев Посад
 						p Телефон: +7 (999) 123 45 67
 						p Почта: admin@bonusip.ru
-			script(type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Abb78764ebf30f3e666d35b5a32561945bcd7dd948f66d9fd6c9f8875dab0ae23&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=false")
+			<a href="https://yandex.ru/maps/?um=constructor%3A214ba2bdd8393e644ba80811221be3c8810dfb86158ddcad31d48f6f1247a240&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A214ba2bdd8393e644ba80811221be3c8810dfb86158ddcad31d48f6f1247a240&amp;width=600&amp;height=400&amp;lang=ru_RU" alt="" style="border: 0;" /></a>
 		footer.container-fluid
 			.row.h-100.justify-content-between.align-items-center
 				.col-4 
