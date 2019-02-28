@@ -1,11 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-	//	все переменные
-
+	//	общие переменные
+	const html = document.documentElement;
 	const imagesForLoad = $('.js-image-load');
 	const mqmd = '(min-width: 768px)';
 	const mq = window.matchMedia(mqmd);
-
+	// навигация
+	const navbar = $('.navbar-nav');
+	const jsScroll = $('.js-scroll');
+	// фиксированные кнопки внизу экрана
+	const tel = $('.tel');
+	const up = $('.up');
 	//	переменные для анимаций по скроллу
 	const addClass = 'animate-go';
 	const circle = $('.circle');
@@ -43,15 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	*/
 	function animate(options) {
 
-	  var start = performance.now();
-
+	  let start = performance.now();
 	  requestAnimationFrame(function animate(time) {
+		let progress;
 	    // timeFraction от 0 до 1
-	    var timeFraction = (time - start) / options.duration;
+	    let timeFraction = (time - start) / options.duration;
 	    if (timeFraction > 1) timeFraction = 1;
 
 	    // текущее состояние анимации
-	    var progress = options.timing(timeFraction)
+	    progress = options.timing ? options.timing(timeFraction) : timeFraction;
 
 	    if (progress>0) options.draw(progress);
 
@@ -61,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	  });
 	}
+
 	/**
 	* jQuery
 	* выполнение действий с элементом при скролле
@@ -74,7 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	*/
 	function scrollAnimate(arr) {
 		$(window).scroll(function() {
-			const scroll = $(this).scrollTop() + $(this).height();
+			const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+			const scroll = scrollTop + $(this).height();
 			for (let i = 0; i < arr.length; i++) {
 				const position = arr[i].position || 0;
 				const hide = arr[i].hide.bind(arr[i]) || false;
@@ -89,6 +96,44 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 	}
+
+	/**
+	* Получение координат дом элемента относительно документа
+	*	@param {object} elem DOM элемент
+	*	@return {object} свойства top, left внутри
+	*/
+	function getCoords(elem) {
+	  var box = elem.getBoundingClientRect();
+	  return {
+	    top: box.top + pageYOffset,
+	    left: box.left + pageXOffset
+	  };
+
+	}
+	// обработка кликов по навигационным элементам
+
+	jsScroll.on('click', (e) => {
+		const href = $(e.target).attr('href');
+		const coord = getCoords(document.querySelector(href)).top - 100;
+		const scroll = window.pageYOffset || html.scrollTop;
+		animate({
+			duration: 500,
+			draw: function(p) {
+				let progress;
+				if (scroll == coord) return false;
+				if (scroll - coord > 0) {
+					progress = Math.floor(scroll - scroll*p);
+					progress > coord ? window.scrollTo(0, progress) : window.scrollTo(0, coord);
+				} else {
+					let step = coord - scroll;
+					progress = Math.floor(scroll + step*p);
+					progress < coord ? window.scrollTo(0, progress) : window.scrollTo(0, coord);
+				}
+			}
+		})
+		e.preventDefault();
+	});
+
 	loadImage(mqmd, mq, imagesForLoad);
 
 	// вызов анимации при скролле на элементы, параметром передается массив с объектами
@@ -103,9 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
 						const data = $(elem).data('width');
 						animate({
 							duration: 3000,
-							timing: function(timeFraction) {
-								return timeFraction;
-							},
 							draw: function(progress) {
 								const pr = Math.round(progress*data);
 								$(elem).css('width', `${pr}%`).find('span').text(`${pr}%`);
@@ -131,9 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
 						$(elem).addClass(addClass);
 						animate({
 							duration: 3000,
-							timing: function(timeFraction) {
-								return timeFraction;
-							},
 							draw: function(progress) {
 								$(elem).find('text').each((i,v) => {
 									const val = $(v).data('num');
@@ -153,6 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	]);
 	
 	//	вопросы. событие раскрытия.
+
 	$('.questions__collapse').on('show.bs.collapse', function () {
  		const id = $(this).attr('id');
  		$(`.arrow[href="#${id}"]`).addClass('arrow_active');
@@ -160,5 +200,19 @@ document.addEventListener('DOMContentLoaded', function() {
 	$('.questions__collapse').on('hide.bs.collapse', function () {
  		const id = $(this).attr('id');
  		$(`.arrow[href="#${id}"]`).removeClass('arrow_active');
+	})
+
+	// скролл в начало страницы по кнопке
+
+	up.on('click', (e) => {
+		const scrollTop = window.pageYOffset || html.scrollTop;
+		animate({
+			duration: 500,
+			draw: function(p) {
+				let progress = Math.floor(scrollTop - scrollTop*p);
+				progress ? window.scrollTo(0, progress) : window.scrollTo(0, 0);
+			}
+		})
+		
 	})
 });

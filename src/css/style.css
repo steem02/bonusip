@@ -155,10 +155,6 @@
 	background: #eaeaea;
 }
 
-html {
-	font-family: 'Helvetica Neue' !important;
-}
-
 .btn {
 	border-radius: 15px;
 }
@@ -246,6 +242,66 @@ html {
 	height: 60px;
 }
 
+.modal-content {
+	background: #eaeaea;
+}
+
+.modal-logo {
+	width: 100%;
+	margin: 30px auto;
+}
+
+.modal-logo img {
+	width: 80%;
+}
+
+.title .close {
+	margin: 0;
+	padding: 0;
+	flex-shrink: 0;
+}
+
+.title .close span {
+	display: inline-block;
+	height: 50px;
+	width: 50px;
+	font-family: Arial, Helvetica sans-serif;
+	font-size: 3rem;
+	line-height: 50px;
+	font-weight: normal;
+}
+
+@media only screen and (min-width: 768px) {
+	.title .close span {
+		width: 60px;
+		height: 60px;
+		line-height: 60px;
+	}
+}
+
+.form__wrap {
+	display: flex;
+	margin-bottom: 2rem;
+	text-align: left;
+}
+
+.form__label {
+	display: table-cell;
+	margin: 0;
+	vertical-align: bottom;
+	text-align: left;
+}
+
+.form__input {
+	flex-grow: 1;
+	margin-left: 1rem;
+	border: none;
+	border-bottom: 1px solid #000;
+	outline: none;
+	border-radius: 0;
+	background: #eaeaea;
+}
+
 .level__decr {
 	border-left: 7px solid #28a745;
 }
@@ -292,16 +348,15 @@ html {
 	background-size: cover;
 }
 
-.hidden {
-	width: 100%;
-}
-
 .gallery__image:hover .hidden {
+	visibility: visible;
 	opacity: 1;
 }
 
 .hidden {
+	width: 100%;
 	opacity: 0;
+	visibility: hidden;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -309,12 +364,14 @@ html {
 	left: 0;
 	outline: 2px solid #fff;
 	outline-offset: -10px;
-	transition: all .4s ease-out;
+	transition: all .4s ease-in-out;
 	background: rgba(0, 0, 0, 0.8);
 }
 
 .hidden__title {
 	display: inline-block;
+	margin-right: 1rem;
+	margin-bottom: 0.5rem;
 	border-bottom: 2px solid red;
 }
 
@@ -585,4 +642,44 @@ footer {
 footer .box-logo svg {
 	width: 110px;
 	height: 27px;
+}
+
+.fixed-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	right: 10px;
+	width: 50px;
+	height: 50px;
+	opacity: 0.8;
+	border-radius: 15px;
+	cursor: pointer;
+	background: #eaeaea;
+}
+
+.fixed-btn:hover {
+	opacity: 1;
+	box-shadow: 1px 1px #d8d8d8;
+}
+
+.up {
+	bottom: 10px;
+}
+
+.up__triangle {
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 20px solid #28a745;
+}
+
+.tel {
+	bottom: 70px;
+}
+
+.tel svg {
+	width: 40px;
+	height: 40px;
 }

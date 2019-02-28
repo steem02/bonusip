@@ -17,17 +17,17 @@ html(lang="ru")
 					span.navbar-toggler-icon
 				#navbarSupportedContent.collapse.navbar-collapse.mr-lg-4.mx-auto.mx-lg-0.justify-content-end
 					ul.navbar-nav.text-center
-						li.nav-item.active
-							a.nav-link(href="#" title="Главная") Главная
-						li.nav-item
-							a.nav-link(href="#" title="Где установить") Где установить
-						li.nav-item
-							a.nav-link(href="#" title="СКУД") СКУД
-						li.nav-item 
-							a.nav-link(href="#" title="Вопросы") Вопросы
-						li.nav-item
-							a.nav-link(href="#" title="Контакты") Контакты
-		.container-fluid.title.text-light
+						li.nav-item.js-scroll
+							a.nav-link(href="#title" title="Главная") Главная
+						li.nav-item.js-scroll
+							a.nav-link(href="#gallery" title="Где установить") Где установить
+						li.nav-item.js-scroll
+							a.nav-link(href="#skud" title="СКУД") СКУД
+						li.nav-item.js-scroll 
+							a.nav-link(href="#questions" title="Вопросы") Вопросы
+						li.nav-item.js-scroll
+							a.nav-link(href="#contacts" title="Контакты") Контакты
+		#title.container-fluid.title.text-light
 			.title__filter
 			.title__main.row.no-gutters.justify-content-center.justify-content-xl-end
 				.col-11.col-sm-11.col-md-8.col-xl-6.text-center.text-xl-left
@@ -55,7 +55,28 @@ html(lang="ru")
 			.container.pb-5
 				.row.mb-5
 					.col-12.text-center
-						button.button-form.btn.btn-lg.btn-danger.rounded-5(type='button') Узнайте стоимость
+						button.button-form.btn.btn-lg.btn-danger(type='button' data-toggle="modal" data-target="#modalCenter") Узнайте стоимость
+						.modal.fade#modalCenter
+							.modal-dialog.modal-dialog-centered
+								.modal-content
+									.modal-header
+										.modal-logo
+											img(src="images/logo.svg", alt="лого",title="логотип")
+										button.btn.close.bg-danger(type="button", data-dismiss="modal")
+											span.text-light &times;
+									.modal-body
+										form.form.container.text-dark.font-weight-bold(action="" name="contact-form")
+											.form__wrap.justify-content-center
+												label.form__label(for="name") Имя:
+												input.form__input#name(type="text", name="text", required)
+											.form__wrap.justify-content-center
+												label.form__label(for="phone") Телефон:
+												input.form__input#phone(type="number", name="phone", required)
+											.form__wrap.justify-content-center
+												label.form__label(for="email") Почта:
+												input.form__input#email(type="email", name="email", required)
+											input.btn.btn-danger.mb-3(type="submit", value="Свяжитесь со мной", required)
+
 		section.level.container.py-5.d-flex.align-items-center
 			.row(style='width: 100%')
 				.col-12.col-lg-6.mb-5.mb-lg-0
@@ -72,35 +93,35 @@ html(lang="ru")
 						.level__progress.progress
 							.level__line.progress-bar.text-right.bg-success(data-width="60")
 								span.px-2 0%
-		section.gallery
+		section#gallery.gallery
 			h2.mb-5.font-weight-bold.text-center Где установить видеонаблюдение?
 			.container-fluid
 				.row.mb-lg-3.justify-content-between
 					.gallery__image.gallery__image_one.col-12.col-lg.mb-3.mb-lg-0.mr-lg-3.d-flex.justify-content-end.align-items-center
 						p.h2.p-2.font-weight-bold.text-light.bg-success дом, квартира
 						.hidden.px-4.px-sm-4.text-light.text-center
-							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold дом, квартира
+							p.h2.hidden__title.my-2.py-2.border-danger.text-center.font-weight-bold дом, квартира
+							a.btn.js-scroll.btn-lg.btn-danger.rounded-5(href="#home") Схема установки
 							p.hidden__text.text-justify Видеонаблюдение в доме или в квартире позволит вам увеличить безопасность вашего жилья. Вы сможете следить за няней или другими посторонними людьми, которые находятся в вашем доме. И сделать это можно через смартфон или компьютер с доступом в интернет. В случае противоправных действий в вашей квартире, вы сможете воспользоваться видеозаписью с камер видеонаблюдения.
-							button.btn.btn-lg.btn-danger.rounded-5(type='button') Схема установки 
 					.gallery__image.gallery__image_two.col-12.col-lg.mb-3.mb-lg-0.d-flex.align-items-center.flex-grow-1
 						h2.p-2.font-weight-bold.text-light.bg-success офис, предприятие
 						.hidden.px-4.px-sm-4.text-light.text-center
-							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold офис, предприятие
+							p.h2.hidden__title.my-2.py-2.border-danger.text-center.font-weight-bold офис, предприятие
+							a.btn.js-scroll.btn-lg.btn-danger.rounded-5(href="#office") Схема установки
 							p.hidden__text.text-justify В любом офисном помещении или крупном предприятии установленные камеры видеонаблюдения, будут правой рукой для любого руководителя. Вы сможете наблюдать за своими подчинёнными. Выявлять недобросовестных работников. Анализировать поведение ваших сотрудников. И всегда, в режиме ONLINE следить за вашим бизнесом.
-							button.btn.btn-lg.btn-danger.rounded-5(type='button') Схема установки
 				.row.mb-5
 					.gallery__image.gallery__image_three.col-12.col-lg.mr-lg-3.mb-3.mb-lg-0.d-flex.justify-content-end.align-items-center
 						h2.p-2.font-weight-bold.text-light.bg-success ресторан, кафе, бар
 						.hidden.px-4.px-sm-4.text-light.text-center
-							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold ресторан, кафе, бар
+							p.h2.hidden__title.my-2.py-2.border-danger.text-center.font-weight-bold ресторан, кафе, бар
+							a.btn.js-scroll.btn-lg.btn-danger.rounded-5(href="#rest") Схема установки
 							p.hidden__text.text-justify Заведение с высокой посещаемостью людей - это главный кандидат для установки камер видеонаблюдения. Множество чрезвычайных ситуаций и возможных конфликтов можно избежать уже на начальной стадии. При помощи камер всегда легко доказать правду. Если у вас сеть заведений, тогда все камеры можно объединить в полноценную экосистему, имеющий доступ ко всем помещениям сразу.
-							button.btn.btn-lg.btn-danger.rounded-5(type='button') Схема установки
 					.gallery__image.gallery__image_four.col-12.col-lg.d-flex.align-items-center
 						h2.p-2.font-weight-bold.text-light.bg-success склад, магазин
 						.hidden.px-4.px-sm-4.text-light.text-center
-							p.h2.hidden__title.my-4.py-2.border-danger.text-center.font-weight-bold склад, магазин
+							p.h2.hidden__title.my-2.py-2.border-danger.text-center.font-weight-bold склад, магазин
+							a.btn.js-scroll.btn-lg.btn-danger.rounded-5(href="#shop") Схема установки
 							p.hidden__text.text-justify Когда стоимость вашего имущества велика, камеры видеонаблюдения смогут обеспечить бдительный надзор. Благодаря разрешающей способности камер, даже самый маленький предмет будет заметен. Вы сможете одновременно охватить большие площади и вести постоянный контроль за ними.
-							button.btn.btn-lg.btn-danger.rounded-5(type='button') Схема установки
 		section.install
 			h2.mb-5.font-weight-bold.text-center Установка видеонаблюдения
 			.container
@@ -150,7 +171,7 @@ html(lang="ru")
 		section.examples.row.mb-5.no-gutters.justify-content-center.align-items-center
 			a.col-10.col-md-8.col-lg-4.examples__btn.btn.btn-lg.btn-danger.d-flex.align-items-center.justify-content-center(href='https://vk.com') Примеры наших работ
 		section.scheme.mb-5
-			.container.mb-5
+			#home.container.mb-5
 				.row.no-gutters.justify-content-between
 					.col-md-4.col-lg-4.d-flex.align-items-center
 						h3.scheme__title Видеонаблюдение в доме или квартире
@@ -172,7 +193,7 @@ html(lang="ru")
 						p Установка видеонаблюдения в коттедже или частных домах позволяет получить постоянный контроль за своей собственностью. Одним из главных плюсов является уменьшенная стоимость страховки. Страховые компании учитывают установленный комплекс видеонаблюдения и уменьшает стоимость страхования частной собственности.
 			.row.mb-5.no-gutters
 				.col-12.scheme__image-ontop(style="background-image: url('../images/sheme_cottage.png')")
-			.container.mb-5
+			#office.container.mb-5
 				.row.no-gutters.justify-content-between
 					.col-md-4.col-lg-4.d-flex.align-items-center
 						h3.scheme__title Видеонаблюдение в офисе или предприятии
@@ -186,7 +207,7 @@ html(lang="ru")
 							li Запись отснятого изображения
 			.row.mb-5.no-gutters
 				.col-12.scheme__image-iso.js-image-load(data-small="../images/sheme_office_small.png" data-big="../images/sheme_office_big.png")
-			.container.mb-5
+			#rest.container.mb-5
 				.row.no-gutters.justify-content-between
 					.col-md-4.col-lg-4.d-flex.align-items-center
 						h3.scheme__title Видеонаблюдение в ресторане, кафе, баре
@@ -201,7 +222,7 @@ html(lang="ru")
 							li Запись отснятого изображения
 			.row.mb-5.no-gutters
 				.col-12.scheme__image-iso.js-image-load(data-small="../images/sheme_coffee_small.png" data-big="../images/sheme_coffee_big.png")
-			.container.mb-5
+			#shop.container.mb-5
 				.row.no-gutters.justify-content-between
 					.col-md-4.col-lg-4.d-flex.align-items-center
 						h3.scheme__title Видеонаблюдение в магазине, на складе
@@ -248,7 +269,7 @@ html(lang="ru")
 		.access.mb-5.d-flex.align-items-center
 			.container.font-weight-bold
 				h2.access__text.ml-auto.px-3.font-weight-bold.text-sm-right.text-light Сигнализации, системы контроля доступом
-		section.skud.mb-5.container
+		section#skud.skud.mb-5.container
 			h2.mb-5.font-weight-bold.text-center Система контроля и управления доступом (СКУД)
 			p Система контроля и управления доступом - это автоматизированная система, в которую входят: камеры видеонаблюдения, замки с возможностью интерактивного доступа и большое количество охранных и пожаробезопасных датчиков. 
 			p Благодаря этой системе Вы получаете полную идентификацию каждого человека, имеющего доступ на охраняемую территорию. Любое действие в системе будет фиксироваться в базе данных.
@@ -283,7 +304,7 @@ html(lang="ru")
 						<text x="100" y="100" fill="#fff" font-size="60" dominant-baseline="middle" text-anchor="middle" data-num="63"></text> 
 						</svg>
 						p.numbers__descr.mt-2.py-1.bg-danger.text-light Взломов остановлено
-		.questions
+		#questions.questions
 			.container
 				.querstions__row.row.py-5#accordion.accordion.justify-content-center
 					.col-12.questions__card.card.my-2.d-flex.flex-row.justify-content-between.border-bottom
@@ -316,7 +337,7 @@ html(lang="ru")
 							include images/arrow.svg
 					.questions__collapse.collapse#five(data-parent="#accordion")
 							p.card-body.ml-2.ml-md-4 Да! Доступ к системе видеонаблюдения имеете только вы! При установке видеонаблюдения, вам предоставят логин и пароль для доступа. Благодаря этому вы сможете войти в систему.
-		.maps
+		#contacts.maps
 			.maps__modal.container.mb-5.mb-lg-0
 				.row.justify-content-center
 					.col-12.pt-5.pt-lg-0
@@ -325,7 +346,7 @@ html(lang="ru")
 						p Адрес: г. Сергиев Посад
 						p Телефон: +7 (999) 123 45 67
 						p Почта: admin@bonusip.ru
-			<a href="https://yandex.ru/maps/?um=constructor%3A214ba2bdd8393e644ba80811221be3c8810dfb86158ddcad31d48f6f1247a240&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A214ba2bdd8393e644ba80811221be3c8810dfb86158ddcad31d48f6f1247a240&amp;width=600&amp;height=400&amp;lang=ru_RU" alt="" style="border: 0;" /></a>
+			//- <a href="https://yandex.ru/maps/?um=constructor%3A214ba2bdd8393e644ba80811221be3c8810dfb86158ddcad31d48f6f1247a240&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A214ba2bdd8393e644ba80811221be3c8810dfb86158ddcad31d48f6f1247a240&amp;width=600&amp;height=400&amp;lang=ru_RU" alt="" style="border: 0;" /></a>
 		footer.container-fluid
 			.row.h-100.justify-content-between.align-items-center
 				.col-4 
@@ -334,6 +355,13 @@ html(lang="ru")
 					span.mb-n4 Производство сайта
 					span.box-logo.ml-3
 						include images/boxproject.svg
+		
+		a(href="tel:+71234567890").fixed-btn.tel
+			include images/call.svg
+		.fixed-btn.up
+			.up__triangle
+
+
 		script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
 		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js", integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP", crossorigin="anonymous")
 		script(src="js/build.js")

@@ -1,10 +1,17 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', function () {
-  //	все переменные
+  //	общие переменные
+  var html = document.documentElement;
   var imagesForLoad = $('.js-image-load');
   var mqmd = '(min-width: 768px)';
-  var mq = window.matchMedia(mqmd); //	переменные для анимаций по скроллу
+  var mq = window.matchMedia(mqmd); // навигация
+
+  var navbar = $('.navbar-nav');
+  var jsScroll = $('.js-scroll'); // фиксированные кнопки внизу экрана
+
+  var tel = $('.tel');
+  var up = $('.up'); //	переменные для анимаций по скроллу
 
   var addClass = 'animate-go';
   var circle = $('.circle');
@@ -44,11 +51,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function animate(options) {
     var start = performance.now();
     requestAnimationFrame(function animate(time) {
-      // timeFraction от 0 до 1
+      var progress; // timeFraction от 0 до 1
+
       var timeFraction = (time - start) / options.duration;
       if (timeFraction > 1) timeFraction = 1; // текущее состояние анимации
 
-      var progress = options.timing(timeFraction);
+      progress = options.timing ? options.timing(timeFraction) : timeFraction;
       if (progress > 0) options.draw(progress);
 
       if (timeFraction < 1) {
@@ -71,7 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function scrollAnimate(arr) {
     $(window).scroll(function () {
-      var scroll = $(this).scrollTop() + $(this).height();
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var scroll = scrollTop + $(this).height();
 
       var _loop = function _loop(i) {
         var position = arr[i].position || 0;
@@ -92,7 +101,44 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+  /**
+  * Получение координат дом элемента относительно документа
+  *	@param {object} elem DOM элемент
+  *	@return {object} свойства top, left внутри
+  */
 
+
+  function getCoords(elem) {
+    var box = elem.getBoundingClientRect();
+    return {
+      top: box.top + pageYOffset,
+      left: box.left + pageXOffset
+    };
+  } // обработка кликов по навигационным элементам
+
+
+  jsScroll.on('click', function (e) {
+    var href = $(e.target).attr('href');
+    var coord = getCoords(document.querySelector(href)).top - 100;
+    var scroll = window.pageYOffset || html.scrollTop;
+    animate({
+      duration: 500,
+      draw: function draw(p) {
+        var progress;
+        if (scroll == coord) return false;
+
+        if (scroll - coord > 0) {
+          progress = Math.floor(scroll - scroll * p);
+          progress > coord ? window.scrollTo(0, progress) : window.scrollTo(0, coord);
+        } else {
+          var step = coord - scroll;
+          progress = Math.floor(scroll + step * p);
+          progress < coord ? window.scrollTo(0, progress) : window.scrollTo(0, coord);
+        }
+      }
+    });
+    e.preventDefault();
+  });
   loadImage(mqmd, mq, imagesForLoad); // вызов анимации при скролле на элементы, параметром передается массив с объектами
 
   scrollAnimate([// безопасность
@@ -104,9 +150,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var data = $(elem).data('width');
         animate({
           duration: 3000,
-          timing: function timing(timeFraction) {
-            return timeFraction;
-          },
           draw: function draw(progress) {
             var pr = Math.round(progress * data);
             $(elem).css('width', "".concat(pr, "%")).find('span').text("".concat(pr, "%"));
@@ -128,9 +171,6 @@ document.addEventListener('DOMContentLoaded', function () {
         $(elem).addClass(addClass);
         animate({
           duration: 3000,
-          timing: function timing(timeFraction) {
-            return timeFraction;
-          },
           draw: function draw(progress) {
             $(elem).find('text').each(function (i, v) {
               var val = $(v).data('num');
@@ -155,5 +195,16 @@ document.addEventListener('DOMContentLoaded', function () {
   $('.questions__collapse').on('hide.bs.collapse', function () {
     var id = $(this).attr('id');
     $(".arrow[href=\"#".concat(id, "\"]")).removeClass('arrow_active');
+  }); // скролл в начало страницы по кнопке
+
+  up.on('click', function (e) {
+    var scrollTop = window.pageYOffset || html.scrollTop;
+    animate({
+      duration: 500,
+      draw: function draw(p) {
+        var progress = Math.floor(scrollTop - scrollTop * p);
+        progress ? window.scrollTo(0, progress) : window.scrollTo(0, 0);
+      }
+    });
   });
 });
