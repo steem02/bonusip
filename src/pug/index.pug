@@ -13,9 +13,9 @@ html(lang="ru")
 				a.navbar-brand.m-0(href="index.html" title="Лого")
 					img(src="images/logo.svg", alt="логотип сайта" title="логотип сайта")
 				a.navbar-text.ml-sm-n5.ml-lg-0.order-lg-last.text-success(href="tel:89991234567" title="Номер телефона") 8 (999) 123-45-67
-				button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent')
+				button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbar-collapse')
 					span.navbar-toggler-icon
-				#navbarSupportedContent.collapse.navbar-collapse.mr-lg-4.mx-auto.mx-lg-0.justify-content-end
+				#navbar-collapse.collapse.navbar-collapse.mr-lg-4.mx-auto.mx-lg-0.justify-content-end
 					ul.navbar-nav.text-center
 						li.nav-item.js-scroll
 							a.nav-link(href="#title" title="Главная") Главная
@@ -281,7 +281,7 @@ html(lang="ru")
 				li #[i - автоматизация снятия/включения охранного режима; управление работой подсистем (видеофиксации, датчиков движения и др.);]
 				li #[i - открывание блокировок дверей при получении соответствующих сигналов с датчиков пожарной сигнализации.]
 			p Установка СКУД позволит вывести контроль вашего бизнеса на новый уровень.
-		.numbers.d-flex.align-items-center
+		.numbers
 			.container
 				.numbers__row.row.text-center.circle
 					.col-12.col-sm-6.col-md-3.my-5.my-md-0 
@@ -356,7 +356,7 @@ html(lang="ru")
 					span.box-logo.ml-3
 						include images/boxproject.svg
 		
-		a(href="tel:+71234567890").fixed-btn.tel
+		.fixed-btn.tel(data-toggle="modal" data-target="#modalCenter")
 			include images/call.svg
 		.fixed-btn.up
 			.up__triangle

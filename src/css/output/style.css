@@ -194,11 +194,21 @@
 }
 
 .navbar {
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
 	background: rgba(0, 0, 0, 0.8);
 }
 
-.navbar-brand img {
+.navbar.animate-go {
+	top: -100%;
+}
+
+.navbar-brand {
 	width: 80px;
+}
+
+.navbar-brand img {
+	width: 100%;
 }
 
 .navbar-collapse {
@@ -264,11 +274,11 @@
 
 .title .close span {
 	display: inline-block;
-	height: 50px;
-	width: 50px;
+	height: 30px;
+	width: 30px;
 	font-family: Arial, Helvetica sans-serif;
-	font-size: 3rem;
-	line-height: 50px;
+	font-size: 2rem;
+	line-height: 30px;
 	font-weight: 400;
 }
 
@@ -464,24 +474,10 @@
 }
 
 .animate-go circle {
-	-webkit-animation: strokeanim 3s ease-out;
-	        animation: strokeanim 3s ease-out;
-	-webkit-animation-fill-mode: forwards;
-	        animation-fill-mode: forwards;
-}
-
-@-webkit-keyframes strokeanim {
-	to {
-		stroke-dashoffset: 0;
-		fill: rgba(0, 0, 0, 0.5);
-	}
-}
-
-@keyframes strokeanim {
-	to {
-		stroke-dashoffset: 0;
-		fill: rgba(0, 0, 0, 0.5);
-	}
+	-webkit-transition: all 3s ease-out;
+	transition: all 3s ease-out;
+	stroke-dashoffset: 0;
+	fill: rgba(0, 0, 0, 0.5);
 }
 
 .scheme__title {
@@ -602,9 +598,14 @@ footer {
 	color: #838383;
 }
 
-footer .box-logo svg {
+footer .box-logo {
+	display: inline-block;
 	width: 110px;
 	height: 27px;
+}
+
+footer .box-logo svg {
+	width: 100%;
 }
 
 .fixed-btn {
@@ -664,17 +665,12 @@ footer .box-logo svg {
 }
 
 @media only screen and (min-width: 576px) {
-	.navbar-brand img {
+	.navbar-brand {
 		width: 150px;
 	}
 }
 
 @media only screen and (min-width: 768px) {
-	.title .close span {
-		width: 60px;
-		height: 60px;
-		line-height: 60px;
-	}
 	.access__text {
 		font-size: 3rem;
 	}

@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var mqmd = '(min-width: 768px)';
   var mq = window.matchMedia(mqmd); // навигация
 
-  var navbar = $('.navbar-nav');
-  var jsScroll = $('.js-scroll'); // фиксированные кнопки внизу экрана
+  var navbar = $('.navbar');
+  var navbarNav = $('.navbar-nav');
+  var scrollToElem = $('.js-scroll');
+  var navbarCollapse = $('#navbar-collapse'); // фиксированные кнопки внизу экрана
 
   var tel = $('.tel');
   var up = $('.up'); //	переменные для анимаций по скроллу
@@ -81,10 +83,18 @@ document.addEventListener('DOMContentLoaded', function () {
     $(window).scroll(function () {
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       var scroll = scrollTop + $(this).height();
+      var hide;
 
       var _loop = function _loop(i) {
         var position = arr[i].position || 0;
-        var hide = arr[i].hide.bind(arr[i]) || false;
+
+        if (arr[i].hide) {
+          hide = arr[i].hide.bind(arr[i]);
+        } else {
+          hide = false;
+        }
+
+        ;
         arr[i].elems.each(function (o, val) {
           var pos = $(val).offset().top;
 
@@ -117,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
   } // обработка кликов по навигационным элементам
 
 
-  jsScroll.on('click', function (e) {
+  scrollToElem.on('click', function (e) {
     var href = $(e.target).attr('href');
     var coord = getCoords(document.querySelector(href)).top - 100;
     var scroll = window.pageYOffset || html.scrollTop;
@@ -129,19 +139,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (scroll - coord > 0) {
           progress = Math.floor(scroll - scroll * p);
-          progress > coord ? window.scrollTo(0, progress) : window.scrollTo(0, coord);
+
+          if (progress > coord) {
+            window.scrollTo(0, progress);
+          } else {
+            window.scrollTo(0, coord);
+          }
         } else {
           var step = coord - scroll;
           progress = Math.floor(scroll + step * p);
-          progress < coord ? window.scrollTo(0, progress) : window.scrollTo(0, coord);
+
+          if (progress < coord) {
+            window.scrollTo(0, progress);
+          } else {
+            window.scrollTo(0, coord);
+          }
         }
       }
     });
+    navbarCollapse.collapse('hide');
     e.preventDefault();
   });
   loadImage(mqmd, mq, imagesForLoad); // вызов анимации при скролле на элементы, параметром передается массив с объектами
 
-  scrollAnimate([// безопасность
+  scrollAnimate([// скрытие меню
+  {
+    elems: navbar,
+    scroll: false,
+    show: function show(i, elem) {
+      var scrollTop = window.pageYOffset || html.scrollTop;
+
+      if (this.scroll > scrollTop) {
+        $(elem).removeClass(addClass);
+      } else {
+        $(elem).addClass(addClass);
+      }
+
+      this.scroll = scrollTop;
+    }
+  }, // безопасность
   {
     elems: line,
     status: [],
@@ -149,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!this.status[i]) {
         var data = $(elem).data('width');
         animate({
-          duration: 3000,
+          duration: 2000,
           draw: function draw(progress) {
             var pr = Math.round(progress * data);
             $(elem).css('width', "".concat(pr, "%")).find('span').text("".concat(pr, "%"));
@@ -159,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     },
     hide: function hide(i, elem) {
-      $(elem).css('width', "").find('span').text("0%");
+      $(elem).css('width', '').find('span').text('0%');
       this.status[i] = false;
     }
   }, // svg круги со статистикой

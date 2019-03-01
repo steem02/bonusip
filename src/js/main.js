@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	const mqmd = '(min-width: 768px)';
 	const mq = window.matchMedia(mqmd);
 	// навигация
-	const navbar = $('.navbar-nav');
-	const jsScroll = $('.js-scroll');
+	const navbar = $('.navbar');
+	const navbarNav = $('.navbar-nav');
+	const scrollToElem = $('.js-scroll');
+	const navbarCollapse = $('#navbar-collapse');
 	// фиксированные кнопки внизу экрана
 	const tel = $('.tel');
 	const up = $('.up');
@@ -82,15 +84,20 @@ document.addEventListener('DOMContentLoaded', function() {
 		$(window).scroll(function() {
 			const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 			const scroll = scrollTop + $(this).height();
+			let hide;
 			for (let i = 0; i < arr.length; i++) {
 				const position = arr[i].position || 0;
-				const hide = arr[i].hide.bind(arr[i]) || false;
+				if (arr[i].hide) {
+					hide = arr[i].hide.bind(arr[i]);
+				} else {
+					hide = false;
+				};
 				arr[i].elems.each((o, val) => {
 					const pos = $(val).offset().top;
 					if (pos < (scroll - position)) {
 						arr[i].show(o, val);
 					} else {
-						if (hide) hide(o,val);
+						if (hide) hide(o, val);
 					}
 				})
 			}
@@ -112,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	// обработка кликов по навигационным элементам
 
-	jsScroll.on('click', (e) => {
+	scrollToElem.on('click', (e) => {
 		const href = $(e.target).attr('href');
 		const coord = getCoords(document.querySelector(href)).top - 100;
 		const scroll = window.pageYOffset || html.scrollTop;
@@ -123,14 +130,23 @@ document.addEventListener('DOMContentLoaded', function() {
 				if (scroll == coord) return false;
 				if (scroll - coord > 0) {
 					progress = Math.floor(scroll - scroll*p);
-					progress > coord ? window.scrollTo(0, progress) : window.scrollTo(0, coord);
+					if (progress > coord) {
+						window.scrollTo(0, progress);
+					} else {
+						window.scrollTo(0, coord);
+					}
 				} else {
 					let step = coord - scroll;
 					progress = Math.floor(scroll + step*p);
-					progress < coord ? window.scrollTo(0, progress) : window.scrollTo(0, coord);
+					if (progress < coord) {
+						window.scrollTo(0, progress);
+					} else {
+						window.scrollTo(0, coord);
+					}
 				}
 			}
 		})
+		navbarCollapse.collapse('hide');
 		e.preventDefault();
 	});
 
@@ -139,6 +155,22 @@ document.addEventListener('DOMContentLoaded', function() {
 	// вызов анимации при скролле на элементы, параметром передается массив с объектами
 
 	scrollAnimate([
+		
+		// скрытие меню
+		{
+			elems: navbar,
+			scroll: false,
+			show: function (i, elem) {
+				const scrollTop = window.pageYOffset || html.scrollTop; 
+				if (this.scroll > scrollTop) {
+					$(elem).removeClass(addClass);
+				} else {
+					$(elem).addClass(addClass);
+				}
+				this.scroll = scrollTop;
+			}
+		},
+		
 		// безопасность
 		{
 			elems: line,
@@ -147,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					if (!this.status[i]) {
 						const data = $(elem).data('width');
 						animate({
-							duration: 3000,
+							duration: 2000,
 							draw: function(progress) {
 								const pr = Math.round(progress*data);
 								$(elem).css('width', `${pr}%`).find('span').text(`${pr}%`);
@@ -160,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					}
 			}, 
 			hide: function(i, elem) {
-				$(elem).css('width', ``).find('span').text(`0%`);
+				$(elem).css('width', '').find('span').text('0%');
 				this.status[i] = false;
 			}
 		},
@@ -215,4 +247,5 @@ document.addEventListener('DOMContentLoaded', function() {
 		})
 		
 	})
+
 });
