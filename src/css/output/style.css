@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .glide {
 	position: relative;
 	width: 100%;
@@ -189,6 +190,37 @@
 	background: #eaeaea;
 }
 
+.blind {
+	position: relative;
+	-webkit-transform: translateX(-100%);
+	        transform: translateX(-100%);
+}
+
+.blind:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #dc3545;
+}
+
+.animate-blind {
+	-webkit-transition: -webkit-transform .3s ease-in-out;
+	transition: -webkit-transform .3s ease-in-out;
+	transition: transform .3s ease-in-out;
+	transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+	-webkit-transform: translateX(0);
+	        transform: translateX(0);
+}
+
+.animate-blind:after {
+	-webkit-transition: left .3s ease-in-out .3s;
+	transition: left .3s ease-in-out .3s;
+	left: 100%;
+}
+
 .btn {
 	border-radius: 15px;
 }
@@ -237,8 +269,60 @@
 	margin-bottom: 150px;
 }
 
+.title__content {
+	overflow: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+
 .title__content h1 {
+	position: relative;
 	max-width: 550px;
+	-webkit-transform: translateX(-100%);
+	        transform: translateX(-100%);
+	-webkit-animation: blind .3s ease-in-out;
+	        animation: blind .3s ease-in-out;
+	-webkit-animation-fill-mode: forwards;
+	        animation-fill-mode: forwards;
+}
+
+.title__content h1:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #dc3545;
+	-webkit-animation: blindafter .3s ease-in-out .3s;
+	        animation: blindafter .3s ease-in-out .3s;
+	-webkit-animation-fill-mode: forwards;
+	        animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes blind {
+	to {
+		-webkit-transform: translateX(0);
+		        transform: translateX(0);
+	}
+}
+
+@keyframes blind {
+	to {
+		-webkit-transform: translateX(0);
+		        transform: translateX(0);
+	}
+}
+
+@-webkit-keyframes blindafter {
+	to {
+		left: 100%;
+	}
+}
+
+@keyframes blindafter {
+	to {
+		left: 100%;
+	}
 }
 
 .subtitle__item {
@@ -432,6 +516,11 @@
 	background: #eaeaea;
 }
 
+.contactus__wrap {
+	width: 100%;
+	height: 100%;
+}
+
 .contactus__text {
 	min-height: 67px;
 }
@@ -448,6 +537,14 @@
 }
 
 .numbers {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 	min-height: 300px;
 	background: url("../images/1987.jpg") no-repeat 50% 50%;
 	background-size: cover;
@@ -590,6 +687,107 @@
 
 .maps {
 	min-height: 400px;
+}
+
+.ymap-container {
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	background: #ffffff url("../images/ymaps.png") no-repeat;
+	background-position: 60% 50%;
+	background-size: cover;
+	-webkit-overflow-scrolling: touch;
+}
+
+#map-yandex {
+	position: relative;
+	width: 100%;
+	min-height: 400px;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+/* Индикатор загрузки, который показывается до загрузки карты */
+.loader {
+	position: absolute;
+	top: -100%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	opacity: 0;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	-webkit-transition: opacity .7s ease;
+	transition: opacity .7s ease;
+	background-color: rgba(0, 0, 0, 0.55);
+	color: #000000;
+	-webkit-overflow-scrolling: touch;
+}
+
+.loader:after,
+.loader:before {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+.loader.is-active {
+	top: 0;
+	opacity: 1;
+}
+
+.loader-default:after {
+	content: '';
+	position: absolute;
+	top: calc(50% - 24px);
+	left: calc(50% - 24px);
+	width: 48px;
+	height: 48px;
+	-webkit-animation: rotation 1s linear infinite;
+	        animation: rotation 1s linear infinite;
+	border: solid 4px #ffffff;
+	border-left-color: transparent;
+	border-radius: 50%;
+}
+
+@-webkit-keyframes rotation {
+	from {
+		-webkit-transform: rotate(0);
+		        transform: rotate(0);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+		        transform: rotate(359deg);
+	}
+}
+
+@keyframes rotation {
+	from {
+		-webkit-transform: rotate(0);
+		        transform: rotate(0);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+		        transform: rotate(359deg);
+	}
+}
+
+@-webkit-keyframes blink {
+	from {
+		opacity: .5;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes blink {
+	from {
+		opacity: .5;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 footer {

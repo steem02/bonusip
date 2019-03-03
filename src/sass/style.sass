@@ -1,11 +1,30 @@
 @import node_modules/@glidejs/glide/src/assets/sass/glide.core
 @import node_modules/@glidejs/glide/src/assets/sass/glide.theme
 @import includes/variables.sass
+// Анимации
+
+.blind
+	position: relative
+	transform: translateX(-100%)
+	&:after
+		content: ''
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		background: $danger
+
+.animate-blind
+	transition: transform .3s ease-in-out
+	transform: translateX(0)
+	
+.animate-blind:after
+	transition: left .3s ease-in-out .3s
+	left: 100%
 
 // html
 // 	font-family: 'Helvetica Neue' !important
-
-
 
 .btn
 	border-radius: 15px
@@ -45,16 +64,43 @@
 	&__main
 		margin-bottom: 150px
 		@include max($sm)
-			margin-bottom: 100px
-	&__content h1
-		max-width: 550px
-		@media screen and (min-width: 410px) and (max-width: $sm)
-			font-size: 2.5rem !important
-		@include max($sm)
-			font-size: 1.8rem
-	&__content h2
-		@include max($sm)
-			font-size: 1.6rem
+			margin-bottom: 100px	
+	&__content
+		overflow: hidden
+		h1
+			position: relative
+			max-width: 550px
+			transform: translateX(-100%)
+			animation: blind .3s ease-in-out
+			animation-fill-mode: forwards
+			&:after
+				content: ''
+				position: absolute
+				top: 0
+				right: 0
+				bottom: 0
+				left: 0
+				background: $danger
+				animation: blindafter .3s ease-in-out .3s
+				animation-fill-mode: forwards
+			@media screen and (min-width: 410px) and (max-width: $sm)
+				font-size: 2.5rem !important
+			@include max($sm)
+				font-size: 1.8rem
+		h2
+			@include max($sm)
+				font-size: 1.6rem
+
+
+// анимация шторки для h1
+
+@keyframes blind
+	to
+		transform: translateX(0)
+
+@keyframes blindafter
+	to
+		left: 100%
 
 .subtitle
 	&__item
@@ -216,8 +262,12 @@
 .contactus
 	&__item
 		background: $silver
+	&__wrap
+		width: 100%
+		height: 100%	
 	&__text
 		min-height: 67px
+
 
 .access
 	height: 400px
@@ -231,6 +281,8 @@
 
 
 .numbers
+	display: flex
+	align-items: center
 	min-height: 300px
 	background: url('../images/1987.jpg') no-repeat 50% 50%
 	background-size: cover
@@ -354,6 +406,70 @@
 			padding: 2rem
 			box-shadow: rgba(154, 154, 154, 0.2) 0px 2px 1px 2px
 			background: #fff
+
+.ymap-container
+	position: relative
+	overflow: hidden
+	cursor: pointer
+	background: #ffffff url('../images/ymaps.png') no-repeat
+	background-position: 60% 50%
+	background-size: cover
+#map-yandex
+	position: relative
+	width: 100%
+	min-height: 400px
+	cursor: pointer
+	background-color: transparent
+
+/* Индикатор загрузки, который показывается до загрузки карты */
+
+.loader
+  position: absolute
+  // z-index: 15
+  top: -100%
+  left: 0
+  width: 100%
+  height: 100%
+  overflow: hidden
+  opacity: 0
+  box-sizing: border-box
+  transition: opacity .7s ease
+  background-color: rgba(0,0,0,.55)
+  color: #000000
+
+.loader:after,
+.loader:before
+  box-sizing: border-box
+
+.loader.is-active
+  top: 0
+  opacity: 1
+
+.loader-default:after
+  content: ''
+  position: absolute
+  top: calc(50% - 24px)
+  left: calc(50% - 24px)
+  width: 48px
+  height: 48px
+  animation: rotation 1s linear infinite
+  border: solid 4px #ffffff
+  border-left-color: transparent
+  border-radius: 50%
+
+@keyframes rotation
+  from
+    transform: rotate(0)
+  to
+    transform: rotate(359deg)
+
+@keyframes blink
+  from
+    opacity: .5
+  to
+    opacity: 1
+
+
 
 footer
 	height: 80px
