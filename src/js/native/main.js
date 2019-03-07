@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var blind = $('.blind'); // элементы со шторкой
 
   var circle = $('.circle');
-  var line = $('.level__line'); // показ бэкграунда из data атрибутов data-big, data-small (jQuery)
+  var line = $('.level__line'); // переменные для яндекс карт
+
+  var ym = $('#map-yandex'); // показ бэкграунда из data атрибутов data-big, data-small (jQuery)
 
   function loadImage(str, match, elem) {
     function eventWin(e) {
@@ -251,9 +253,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function init() {
     var myMapTemp = new ymaps.Map("map-yandex", {
-      center: [56.30911946356959, 38.122948589251266],
+      center: [+ym.data('centerx'), +ym.data('centery')],
       // координаты центра на карте
-      zoom: 14,
+      zoom: +ym.data('zoom'),
       // коэффициент приближения карты
       controls: ['zoomControl', 'fullscreenControl'] // выбираем только те функции, которые необходимы при использовании
 
@@ -261,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var myPlacemarkTemp = new ymaps.GeoObject({
       geometry: {
         type: "Point",
-        coordinates: [56.31214893101056, 38.13560861580155] // координаты, где будет размещаться флажок на карте
+        coordinates: [+ym.data('flagx'), +ym.data('flagy')] // координаты, где будет размещаться флажок на карте
 
       }
     });
