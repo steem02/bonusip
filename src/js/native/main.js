@@ -183,12 +183,14 @@ document.addEventListener('DOMContentLoaded', function () {
     status: [],
     show: function show(i, elem) {
       if (!this.status[i]) {
-        var data = $(elem).data('width');
+        var count = $(elem).data('count');
+        var width = $(elem).data('width');
         animate({
           duration: 2000,
           draw: function draw(progress) {
-            var pr = Math.round(progress * data);
-            $(elem).css('width', "".concat(pr, "%")).find('span').text("".concat(pr, "%"));
+            var prCount = Math.round(progress * count);
+            var prWidth = Math.round(progress * width);
+            $(elem).css('width', "".concat(prWidth, "%")).find('span').text("".concat(prCount, " \u0420"));
           }
         });
         this.status[i] = true;

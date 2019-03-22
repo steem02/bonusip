@@ -183,17 +183,16 @@ document.addEventListener('DOMContentLoaded', function() {
 			status: [],
 			show: function(i, elem) {
 					if (!this.status[i]) {
-						const data = $(elem).data('width');
+						const count = $(elem).data('count');
+						const width = $(elem).data('width');
 						animate({
 							duration: 2000,
 							draw: function(progress) {
-								const pr = Math.round(progress*data);
-								$(elem).css('width', `${pr}%`).find('span').text(`${pr}%`);
+								const prCount = Math.round(progress*count);
+								const prWidth = Math.round(progress*width);
+								$(elem).css('width', `${prWidth}%`).find('span').text(`${prCount} Р`);
 							}
 						});
-
-
-						
 						this.status[i] = true;
 					}
 			}, 

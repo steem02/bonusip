@@ -87,12 +87,12 @@ html(lang="ru")
 					.level__animate.flex-grow-1
 						p Стоимость страхования имущества до установки камер
 						.level__progress.progress.mb-2
-							.level__line.progress-bar.text-right.bg-danger(data-width="100")
-								span.px-2 0%
+							.level__line.progress-bar.text-right.bg-danger(data-width="100" data-count="10000")
+								span.px-2 0 Р
 						p Стоимость страхования имущества после установки камер
 						.level__progress.progress
-							.level__line.progress-bar.text-right.bg-success(data-width="60")
-								span.px-2 0%
+							.level__line.progress-bar.text-right.bg-success(data-width="60" data-count="6000")
+								span.px-2 0 Р
 		section#gallery.gallery
 			h2.mb-5.font-weight-bold.text-center Где установить видеонаблюдение?
 			.container-fluid
@@ -313,6 +313,8 @@ html(lang="ru")
 		#questions.questions
 			.container
 				.querstions__row.row.py-5#accordion.accordion.justify-content-center
+					.col-12.mb-5.text-center
+						h3 Установка видеонаблюдения на складе
 					.col-12.questions__card.card.my-2.d-flex.flex-row.justify-content-between.border-bottom
 						a.questions__btn.btn.pl-0.font-weight-bold(href="#one", data-toggle="collapse") Возможно распознать лицо или номер машины?
 						a.questions__btn.btn.arrow(href="#one", data-toggle="collapse")
