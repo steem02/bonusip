@@ -190,14 +190,14 @@ document.addEventListener('DOMContentLoaded', function () {
           draw: function draw(progress) {
             var prCount = Math.round(progress * count);
             var prWidth = Math.round(progress * width);
-            $(elem).css('width', "".concat(prWidth, "%")).find('span').text("".concat(prCount, " \u0420"));
+            $(elem).css('width', "".concat(prWidth, "%")).find('.level__num').text(prCount);
           }
         });
         this.status[i] = true;
       }
     },
     hide: function hide(i, elem) {
-      $(elem).css('width', '').find('span').text('0%');
+      $(elem).css('width', '').find('.level__num').text('0');
       this.status[i] = false;
     }
   }, // svg круги со статистикой

@@ -190,14 +190,14 @@ document.addEventListener('DOMContentLoaded', function() {
 							draw: function(progress) {
 								const prCount = Math.round(progress*count);
 								const prWidth = Math.round(progress*width);
-								$(elem).css('width', `${prWidth}%`).find('span').text(`${prCount} Р`);
+								$(elem).css('width', `${prWidth}%`).find('.level__num').text(prCount);
 							}
 						});
 						this.status[i] = true;
 					}
 			}, 
 			hide: function(i, elem) {
-				$(elem).css('width', '').find('span').text('0%');
+				$(elem).css('width', '').find('.level__num').text('0');
 				this.status[i] = false;
 			}
 		},
